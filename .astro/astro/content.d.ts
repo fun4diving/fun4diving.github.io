@@ -154,6 +154,28 @@ declare module 'astro:content' {
   collection: "news";
   data: any;
 }>;
+"pages": {
+"about": {
+	id: "about";
+  collection: "pages";
+  data: any
+};
+"contact": {
+	id: "contact";
+  collection: "pages";
+  data: any
+};
+"index": {
+	id: "index";
+  collection: "pages";
+  data: any
+};
+"schedule": {
+	id: "schedule";
+  collection: "pages";
+  data: any
+};
+};
 
 	};
 
