@@ -2,6 +2,9 @@ backend:
   name: github
   repo: nike70543/fun4diving-website
   branch: main
+  # 使用社群維護的免費 GitHub OAuth 網關，不用自架、不走 Netlify
+  base_url: https://decap-cms-oauth-provider.vercel.app
+  auth_endpoint: /api/auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
