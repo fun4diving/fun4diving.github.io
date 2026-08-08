@@ -1,0 +1,6 @@
+{
+  "collections": [
+    { "name": "news", "label": "最新消息 (News)", "path": "src/content/news" },
+    { "name": "courses", "label": "課程與價目 (Courses)", "path": "src/content/courses" }
+  ]
+}

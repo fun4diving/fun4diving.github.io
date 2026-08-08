@@ -1,9 +1,17 @@
+#!/bin/bash
+set -e
+
+MY_CLIENT_ID="461f2de2-60d6-4168-9ab0-83832630f12b"
+MY_TOKEN="70478ccaa9720c8e866b18d33e7d92406e3cc62d"
+
+echo "⚙️ 1. 寫入純本地設定檔（暫不填 ClientID，避免觸發雲端檢查）..."
+cat << FILE_EOF > tina/config.ts
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
-  branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
-  clientId: process.env.TINA_CLIENT_ID || "461f2de2-60d6-4168-9ab0-83832630f12b",
-  token: process.env.TINA_TOKEN || "70478ccaa9720c8e866b18d33e7d92406e3cc62d",
+  branch: "main",
+  clientId: process.env.TINA_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
 
   build: {
     outputFolder: "admin",
@@ -44,3 +52,18 @@ export default defineConfig({
     ],
   },
 });
+FILE_EOF
+
+echo "🔨 2. 本地產生 Schema 檔案..."
+npx tinacms build --local
+
+echo "🚀 3. 強制加載並推送 tina/__generated__ 到 GitHub..."
+if [ -f .gitignore ]; then
+  sed -i '/__generated__/d' .gitignore || true
+fi
+git add -f tina/__generated__
+git add .
+git commit -m "Initialize tina schema on main branch" || true
+git push origin main --force
+
+echo "✨ 第一階段完成！Schema 已順利推送到 GitHub！"
