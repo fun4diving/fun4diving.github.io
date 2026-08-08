@@ -1,7 +1,12 @@
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
-  branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
+  // 優先使用環境變數分支，預設為 main
+  branch:
+    process.env.GITHUB_BRANCH ||
+    process.env.HEAD ||
+    process.env.VERCEL_GIT_COMMIT_REF ||
+    "main",
   
   clientId: process.env.TINA_CLIENT_ID || "461f2de2-60d6-4168-9ab0-83832630f12b",
   token: process.env.TINA_TOKEN || "70478ccaa9720c8e866b18d33e7d92406e3cc62d",
