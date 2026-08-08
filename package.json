@@ -11,13 +11,11 @@
     "tinacms": "tinacms dev -c \"astro dev\""
   },
   "dependencies": {
-    "@astrojs/node": "^11.1.0",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.15.0",
     "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@tinacms/astro": "^0.6.1",
     "@tinacms/cli": "^2.5.6",
     "@types/node": "^26.2.0",
     "react": "^18.3.1",
