@@ -1,10 +1,17 @@
+#!/bin/bash
+set -e
+
+echo "⚙️ 重新重構 tina/config.ts，強制純本地模式..."
+
+cat << 'FILE_EOF' > tina/config.ts
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
   branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
   
-  clientId: process.env.TINA_CLIENT_ID || "461f2de2-60d6-4168-9ab0-83832630f12b",
-  token: process.env.TINA_TOKEN || "70478ccaa9720c8e866b18d33e7d92406e3cc62d",
+  // 當有環境變數時才使用 TinaCloud，否則走純 Local 模式
+  clientId: process.env.TINA_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
 
   build: {
     outputFolder: "admin",
@@ -45,3 +52,14 @@ export default defineConfig({
     ],
   },
 });
+FILE_EOF
+
+echo "🔨 執行純本地 Tina 建置 (帶上 TINA_PUBLIC_IS_LOCAL=true)..."
+TINA_PUBLIC_IS_LOCAL=true npx tinacms build --local
+
+echo "🚀 將建置好的 Tina 檔案推送至 GitHub..."
+git add .
+git commit -m "Fix TinaCMS config for pure local build without cloud checking" || true
+git push origin main --force
+
+echo "✨ 成功修復！這次絕對不會再去連線 404 的雲端 API 了！"

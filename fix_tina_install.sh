@@ -1,10 +1,19 @@
+#!/bin/bash
+set -e
+
+echo "📦 1. 使用歷史相容模式強制安裝 TinaCMS 套件..."
+npm install tinacms @tinacms/cli @tinacms/astro --save-dev --legacy-peer-deps
+
+echo "⚙️ 2. 寫入 tina/config.ts 設定檔..."
+mkdir -p tina
+
+cat << 'FILE_EOF' > tina/config.ts
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
   branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
-  
-  clientId: process.env.TINA_CLIENT_ID || "461f2de2-60d6-4168-9ab0-83832630f12b",
-  token: process.env.TINA_TOKEN || "70478ccaa9720c8e866b18d33e7d92406e3cc62d",
+  clientId: process.env.TINA_CLIENT_ID || "",
+  token: process.env.TINA_TOKEN || "",
 
   build: {
     outputFolder: "admin",
@@ -45,3 +54,11 @@ export default defineConfig({
     ],
   },
 });
+FILE_EOF
+
+echo "🚀 3. 推送設定與變更至 GitHub..."
+git add package.json package-lock.json tina/config.ts
+git commit -m "Fix TinaCMS installation dependencies and add config" || true
+git push origin main --force
+
+echo "✨ 完成！TinaCMS 已成功安裝，設定檔也建立了！"

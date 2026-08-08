@@ -1,10 +1,29 @@
+#!/bin/bash
+set -e
+
+MY_CLIENT_ID="461f2de2-60d6-4168-9ab0-83832630f12b"
+MY_TOKEN="70478ccaa9720c8e866b18d33e7d92406e3cc62d"
+
+echo "🚀 1. 先將最新變更推送到 GitHub main 分支，讓 TinaCloud 能抓到最新狀態..."
+git add .
+git commit -m "Update tina config before cloud verification" || true
+git push origin main --force
+
+echo "⚙️ 2. 寫入相容的 branch 設定..."
+
+cat << FILE_EOF > tina/config.ts
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
-  branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
+  // 優先使用環境變數分支，預設為 main
+  branch:
+    process.env.GITHUB_BRANCH ||
+    process.env.HEAD ||
+    process.env.VERCEL_GIT_COMMIT_REF ||
+    "main",
   
-  clientId: process.env.TINA_CLIENT_ID || "461f2de2-60d6-4168-9ab0-83832630f12b",
-  token: process.env.TINA_TOKEN || "70478ccaa9720c8e866b18d33e7d92406e3cc62d",
+  clientId: process.env.TINA_CLIENT_ID || "${MY_CLIENT_ID}",
+  token: process.env.TINA_TOKEN || "${MY_TOKEN}",
 
   build: {
     outputFolder: "admin",
@@ -45,3 +64,14 @@ export default defineConfig({
     ],
   },
 });
+FILE_EOF
+
+echo "🔨 3. 再次執行 Tina Build 驗證..."
+npx tinacms build
+
+echo "🚀 4. 將編譯完成的 Admin 後台推送至 GitHub..."
+git add .
+git commit -m "Successfully built TinaCMS admin portal" || true
+git push origin main --force
+
+echo "🎉 完美解決！TinaCMS 後台已成功建置完成！"

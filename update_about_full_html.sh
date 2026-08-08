@@ -1,0 +1,154 @@
+#!/bin/bash
+set -e
+echo "📦 正在將 Webnode 真正的『關於我們』完整網頁內容 100% 寫入 src/pages/about.astro..."
+
+cat << 'FILE_EOF' > src/pages/about.astro
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="關於Fun肆潛水 Fun 4 Diving Club">
+  <section class="max-w-6xl mx-auto py-12 px-4 sm:px-6">
+    
+    <!-- 主標題區 -->
+    <div class="text-center space-y-4 mb-12">
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">關於Fun肆潛水</h1>
+      <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- 核心介紹文案 -->
+    <div class="bg-slate-900/90 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-8 mb-16 text-slate-200 leading-relaxed">
+      <div class="space-y-4">
+        <h2 class="text-xl sm:text-2xl font-bold text-cyan-400 flex items-center gap-2">
+          <span>🌊</span> 潛點最多樣的潛店——無論有無證照，帶你輕鬆探索台灣最完整的海底秘境！
+        </h2>
+        <p class="text-base sm:text-lg">你準備好潛入蔚藍大海，探索台灣最精彩的水下世界了嗎？</p>
+        <p class="text-base sm:text-lg">
+          無論你是有證照的資深潛水員，還是從未下水的新手，<strong class="text-white">Fun肆潛水</strong>都能帶你安全又輕鬆地享受潛水的樂趣！ 🏝️
+        </p>
+        <p class="text-slate-300">
+          我們是一支由五位經驗豐富的東北角潛水教練領軍的專業團隊，對當地潛點瞭若指掌，帶你探索東北角最完整的潛水版圖！ 從龍洞、潮境、基隆嶼等經典潛點，到鮮少有人帶潛的<strong class="text-cyan-300">隱藏秘境</strong>，如萊萊、油庫、天福宮、深奧、潮境、水下海扇迷宮、82.5K、82.8K、83K 等等等，每一次下潛，都是一次嶄新的探險！ 🌊
+        </p>
+      </div>
+
+      <!-- 6 大優勢 -->
+      <div class="pt-6 border-t border-slate-800 space-y-4">
+        <h2 class="text-2xl font-black text-white">🔹 為什麼選擇Fun肆潛水？</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-300">
+          <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800"><strong class="text-cyan-400">✅ 無證照也能玩！</strong><br>參加體驗潛水，在教練帶領下輕鬆潛入海底，感受無重力的奇妙世界！</div>
+          <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800"><strong class="text-cyan-400">✅ 想學潛水？沒問題！</strong><br>提供 PADI/ADS 國際認證潛水課程，從零開始，輕鬆取得潛水證照！</div>
+          <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800"><strong class="text-cyan-400">✅ 北部最強 Fun Dive 潛店</strong><br>不論剛上完課或是有照潛水員，都可以來讓我們帶你玩遍東北角最精彩的潛點！</div>
+          <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800"><strong class="text-cyan-400">✅ 五星級教練團隊</strong><br>五位東北角頂尖教練，熟悉每個潛點的最佳時機與水況，確保最安全 & 最好玩！</div>
+          <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800"><strong class="text-cyan-400">✅ 東北角最完整的潛點選擇</strong><br>除了龍洞、鼻頭角這種熱門潛點，我們還帶你探索所有隱藏&精彩的潛點，絕無侷限！</div>
+          <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800"><strong class="text-cyan-400">✅ 設備新穎、全方位安全把關</strong><br>定期維護的潛水裝備 + 完整潛水計畫，讓每一次下潛都安心又享受！</div>
+        </div>
+        <p class="text-cyan-300 font-bold pt-2">
+          🌊 無論你是初次嘗試，還是資深潛水玩家，這裡都有最適合你的潛水旅程！現在就預約體驗潛水、證照課程或 Fun Dive，一起探索東北角最完整的潛點吧！ 🐠💙✨
+        </p>
+      </div>
+
+      <!-- 核心大圖區 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+        <div class="md:col-span-1 rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-[320px]">
+          <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000022-2b3ba2b3bc/S__106807389.jpeg" alt="Fun肆潛水" class="w-full h-full object-cover">
+        </div>
+        <div class="md:col-span-2 rounded-2xl overflow-hidden border border-slate-800 shadow-xl h-[320px]">
+          <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000018-122491224c/S__9822328.jpeg" alt="Fun肆潛水團隊" class="w-full h-full object-cover">
+        </div>
+      </div>
+    </div>
+
+    <!-- 五大教練團隊介紹區 -->
+    <div class="space-y-8 mb-16">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl font-black text-white">五星級教練團隊</h2>
+        <p class="text-slate-400 text-sm">熟悉每個潛點的最佳時機與水況，帶你安心下水！</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+        <!-- 老王 -->
+        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-center space-y-3 group hover:border-cyan-500/50 transition">
+          <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-cyan-400/40 shadow-lg">
+            <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000074-915bc915bf/23677731.png" alt="老王 教練" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300">老王</h3>
+        </div>
+
+        <!-- 阿豪 -->
+        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-center space-y-3 group hover:border-cyan-500/50 transition">
+          <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-cyan-400/40 shadow-lg">
+            <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000070-e6ca4e6ca6/9C55BE06-0592-47E8-81BB-9257F735005D.png" alt="阿豪 教練" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300">阿豪</h3>
+        </div>
+
+        <!-- 劉大 -->
+        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-center space-y-3 group hover:border-cyan-500/50 transition">
+          <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-cyan-400/40 shadow-lg">
+            <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000076-d2d11d2d13/229522.png" alt="劉大 教練" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300">劉大</h3>
+        </div>
+
+        <!-- 胖胖 -->
+        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-center space-y-3 group hover:border-cyan-500/50 transition">
+          <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-cyan-400/40 shadow-lg">
+            <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000082-831698316b/S__9822328.png" alt="胖胖 教練" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300">胖胖</h3>
+        </div>
+
+        <!-- 吉米 -->
+        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-center space-y-3 group hover:border-cyan-500/50 transition">
+          <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-cyan-400/40 shadow-lg">
+            <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000032-db4bbdb4bd/IMG_20240625_000536_227.png" alt="吉米 教練" class="w-full h-full object-cover">
+          </div>
+          <h3 class="text-lg font-bold text-white group-hover:text-cyan-300">吉米</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- 認識團隊與課程項目 -->
+    <div class="bg-slate-900/90 p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-2xl space-y-6 text-slate-200">
+      <h2 class="text-3xl font-black text-center text-white">認識團隊</h2>
+      <p class="leading-relaxed">
+        潛水，不只是一次冒險，更是一場與海洋的對話。而一場完美的潛水旅程，從一支 <strong class="text-white">專業又熱情的教練團隊</strong> 開始！
+      </p>
+      <p class="leading-relaxed text-slate-300">
+        <strong class="text-cyan-400">Fun肆潛水</strong>的教練團隊由五位經驗豐富的東北角潛水教練組成，每位教練都擁有多年實戰經驗與國際專業認證，年輕幽默又專業，對待客戶都像對待最好的朋友一樣真心。我們對東北角、墾丁、小琉球及蘭嶼、綠島的海況、地形、生態了然於心。無論你是想嘗試人生第一次潛水的新手，還是尋找挑戰的進階潛水員，我們都能根據你的需求，提供最安全、最適合、最有趣的潛水體驗！
+      </p>
+
+      <div class="pt-4 space-y-4">
+        <h3 class="text-xl font-bold text-cyan-300">我們擁有 PADI 與 ADS 雙系統的教練資格，能教學核發：</h3>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">🔹 初階開放水域 Open Water (OW)</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">🔹 進階開放水域 Advanced Open Water (AOW)</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">🔹 救援潛水員 Rescue Diver</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">🔹 緊急第一反應 Emergency First Response (EFR)</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">🔹 潛水長 Dive Master (DM)</li>
+        </ul>
+
+        <h3 class="text-xl font-bold text-cyan-300 pt-2">多項專長證照：</h3>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm font-medium">
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">▫️ Enriched Air Diver (高氧潛水員)</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">▫️ Diver Propulsion Vehicle (DPV) 水中推進器</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">▫️ Deep Diver (深潛潛水員)</li>
+          <li class="p-3 bg-slate-950/60 rounded-xl border border-slate-800/80">▫️ Emergency Oxygen Provider (緊急供氧)</li>
+        </ul>
+      </div>
+
+      <p class="text-center text-cyan-400 font-bold text-lg pt-4">
+        跟著我們一起 潛入台灣最美的海底秘境，發現不一樣的世界！ 🌊💙
+      </p>
+    </div>
+
+  </section>
+</Layout>
+FILE_EOF
+
+# 強制推送
+echo "🚀 正在將完全比對原始 HTML 的『關於我們』內容推送至 GitHub..."
+git add src/pages/about.astro
+git commit -m "Complete 100% mirror of About Us page matching Webnode raw source" || true
+git push origin main --force
+
+echo "✨ 成功發布！"

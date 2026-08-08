@@ -1,0 +1,127 @@
+#!/bin/bash
+set -e
+echo "📦 正在優化Layout與導覽列，修正手機版頂部選單凍結（Sticky）問題..."
+
+# 1. 確保 Layout.astro 中導覽列 (header / nav) 具備全平台固定的 CSS
+cat << 'FILE_EOF' > src/layouts/Layout.astro
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-TW" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Fun肆潛水 Fun 4 Diving Official" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-cyan-500 selection:text-white">
+    
+    <!-- 頂部凍結導覽列 (Header) -->
+    <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-slate-950/80 border-b border-slate-800/80 transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          
+          <!-- Logo 區塊 -->
+          <a href="/fun4diving-website/" class="flex items-center gap-3 group">
+            <img 
+              src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000014-72a2472a26/tanktest2.png" 
+              alt="Fun肆潛水 Logo" 
+              class="h-10 sm:h-12 w-auto object-contain transition transform group-hover:scale-105"
+            />
+            <span class="font-black text-lg sm:text-xl tracking-wider text-white group-hover:text-cyan-400 transition">
+              Fun肆潛水
+            </span>
+          </a>
+
+          <!-- 桌機選單 -->
+          <nav class="hidden md:flex items-center gap-6 font-medium text-sm">
+            <a href="/fun4diving-website/" class="hover:text-cyan-400 transition py-1">首頁 Index</a>
+            <a href="/fun4diving-website/about" class="hover:text-cyan-400 transition py-1">關於Fun肆潛水</a>
+            <a href="/fun4diving-website/news" class="hover:text-cyan-400 transition py-1">新聞 News</a>
+            <a href="/fun4diving-website/courses" class="hover:text-cyan-400 transition py-1">課程與住宿 Course</a>
+            <a href="/fun4diving-website/contact" class="hover:text-cyan-400 transition py-1">聯絡我們 Contact</a>
+            <a href="/fun4diving-website/schedule" class="hover:text-cyan-400 transition py-1 text-cyan-400 font-bold">活動列表 Schedule</a>
+          </nav>
+
+          <!-- 手機漢堡選單按鈕 -->
+          <button 
+            id="mobile-menu-btn"
+            type="button" 
+            class="md:hidden p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none"
+            aria-label="Toggle Menu"
+          >
+            <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- 手機下拉展開選單 (固定在凍結 Header 下方) -->
+      <div id="mobile-menu" class="hidden md:hidden bg-slate-950/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3 backdrop-blur-xl">
+        <a href="/fun4diving-website/" class="block py-2 text-base font-medium text-slate-200 hover:text-cyan-400">首頁 Index</a>
+        <a href="/fun4diving-website/about" class="block py-2 text-base font-medium text-slate-200 hover:text-cyan-400">關於Fun肆潛水</a>
+        <a href="/fun4diving-website/news" class="block py-2 text-base font-medium text-slate-200 hover:text-cyan-400">新聞 News</a>
+        <a href="/fun4diving-website/courses" class="block py-2 text-base font-medium text-slate-200 hover:text-cyan-400">課程與住宿 Course</a>
+        <a href="/fun4diving-website/contact" class="block py-2 text-base font-medium text-slate-200 hover:text-cyan-400">聯絡我們 Contact</a>
+        <a href="/fun4diving-website/schedule" class="block py-2 text-base font-bold text-cyan-400">活動列表 Schedule</a>
+      </div>
+    </header>
+
+    <!-- 頁面主要內容 -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 text-slate-400 text-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center md:text-left md:flex md:justify-between md:items-center">
+        <div class="space-y-2">
+          <h3 class="text-white font-bold text-lg">與我們聯繫</h3>
+          <p>📍 新北市瑞芳區洞頂路136-6號 22451</p>
+          <p>📞 +886-921-167-406</p>
+          <p>✉️ <a href="mailto:fun4divingofficial@gmail.com" class="hover:text-cyan-400 underline">fun4divingofficial@gmail.com</a></p>
+        </div>
+        <div class="text-xs text-slate-500 pt-4 md:pt-0">
+          © {new Date().getFullYear()} Fun肆潛水 Fun 4 Diving Official. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- 手機選單切換開關腳本 -->
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          openIcon?.classList.toggle('hidden');
+          closeIcon?.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>
+FILE_EOF
+
+# 2. 推送至 GitHub 部署
+echo "🚀 正在將修正後的 Layout 推送至 GitHub..."
+git add src/layouts/Layout.astro
+git commit -m "Fix sticky navigation bar for mobile devices" || true
+git push origin main --force
+
+echo "✨ 修改完成！手機版選單現在會始終置頂凍結在螢幕最上方。"

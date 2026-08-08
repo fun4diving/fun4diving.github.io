@@ -1,0 +1,277 @@
+#!/bin/bash
+set -e
+echo "📦 正在將國旗替換為跨平台相容的 SVG 圖示並寫入 src/pages/schedule.astro..."
+
+cat << 'FILE_EOF' > src/pages/schedule.astro
+---
+import Layout from '../layouts/Layout.astro';
+
+// 國旗 SVG CDN 快速連結
+const flags = {
+  tw: "https://flagcdn.com/w40/tw.png",
+  ph: "https://flagcdn.com/w40/ph.png",
+  my: "https://flagcdn.com/w40/my.png",
+  id: "https://flagcdn.com/w40/id.png",
+  mv: "https://flagcdn.com/w40/mv.png",
+  eg: "https://flagcdn.com/w40/eg.png"
+};
+---
+<Layout title="Fun肆潛水活動列表 Schedule :: Fun肆潛水-Fun 4 Diving Official">
+  <section class="max-w-6xl mx-auto py-12 px-4 sm:px-6">
+    
+    <!-- 頁面標題 -->
+    <div class="text-center space-y-4 mb-12">
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">Fun肆潛水活動列表 Schedule</h1>
+      <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- 主內容區：雙欄佈局 (經典活動 & 國內外活動) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- 左欄：Fun肆經典活動 -->
+      <div class="bg-slate-900/90 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-xl space-y-8 h-fit">
+        <h2 class="text-2xl font-black text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-2">
+          <span>🎉</span> Fun肆經典活動
+        </h2>
+
+        <!-- 年終感恩會 -->
+        <div class="space-y-2 p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
+          <h3 class="text-xl font-bold text-white">年終感恩會</h3>
+          <p class="text-slate-300 text-sm">🗓️ 日期：2026/03/21</p>
+          <p class="text-slate-300 text-sm">👤 主辦：老王</p>
+          <p class="text-cyan-400 text-sm font-semibold">ℹ️ 活動資訊：完美結束</p>
+        </div>
+
+        <!-- FUN肆淨灘淨海 -->
+        <div class="space-y-2 p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
+          <h3 class="text-xl font-bold text-white">FUN肆淨灘淨海</h3>
+          <p class="text-slate-300 text-sm">🗓️ 日期：2026/05/17</p>
+          <p class="text-slate-300 text-sm">👤 主辦：吉米</p>
+          <p class="text-sm">
+            ℹ️ 活動資訊：
+            <a href="https://forms.gle/fEHcuEDx6CqNmi687" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+              https://forms.gle/fEHcuEDx6CqNmi687
+            </a>
+          </p>
+        </div>
+
+        <!-- FUN肆經典烤肉趴 -->
+        <div class="space-y-2 p-4 bg-slate-950/60 rounded-2xl border border-slate-800/80">
+          <h3 class="text-xl font-bold text-white">FUN肆經典烤肉趴</h3>
+          <p class="text-slate-300 text-sm">🗓️ 日期：2026/08/15</p>
+          <p class="text-slate-300 text-sm">👤 主辦：阿豪</p>
+          <p class="text-amber-400 text-sm font-semibold">ℹ️ 活動資訊：敬請期待</p>
+        </div>
+      </div>
+
+      <!-- 右欄：國內 & 國外潛水活動 -->
+      <div class="space-y-8">
+        
+        <!-- 國內潛水活動 -->
+        <div class="bg-slate-900/90 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-xl space-y-6">
+          <h2 class="text-2xl font-black text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-2">
+            <img src={flags.tw} class="w-6 h-auto inline rounded-sm" alt="台灣"> 國內潛水活動
+          </h2>
+
+          <!-- 東北角岸潛 -->
+          <div class="space-y-2 pb-4 border-b border-slate-800/60">
+            <h3 class="text-lg font-bold text-white">2026 東北角岸潛活動</h3>
+            <p class="text-sm">
+              活動資訊：
+              <a href="https://forms.gle/qoXgVxxntnLdxXvC6" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/qoXgVxxntnLdxXvC6
+              </a>
+            </p>
+          </div>
+
+          <!-- 東北角船潛 -->
+          <div class="space-y-2 pb-4 border-b border-slate-800/60">
+            <h3 class="text-lg font-bold text-white">2026 東北角船潛活動</h3>
+            <p class="text-sm">
+              活動資訊：
+              <a href="https://forms.gle/W4EzgCd2M3tRzw9V8" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/W4EzgCd2M3tRzw9V8
+              </a>
+            </p>
+          </div>
+
+          <!-- 小琉球 -->
+          <div class="space-y-2 pb-4 border-b border-slate-800/60">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <img src={flags.tw} class="w-5 h-auto inline rounded-sm" alt="台灣"> 小琉球潛水團
+            </h3>
+            <p class="text-slate-300 text-sm">👤 主辦：阿豪+吉米</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：2026/4/3- 4/6</p>
+            <p class="text-sm">
+              活動資訊：
+              <a href="https://forms.gle/EiAYRHeriAKGyFQUA" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/EiAYRHeriAKGyFQUA
+              </a>
+            </p>
+          </div>
+
+          <!-- 綠島 -->
+          <div class="space-y-2 pb-4 border-b border-slate-800/60">
+            <h3 class="text-lg font-bold text-white">綠島</h3>
+            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：2026/5/1- 5/3</p>
+            <p class="text-sm">
+              活動資訊(填表候補)：
+              <a href="https://forms.gle/Pn9G5vVCM7ZAgx7F6" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/Pn9G5vVCM7ZAgx7F6
+              </a>
+            </p>
+          </div>
+
+          <!-- 墾丁七星岩 -->
+          <div class="space-y-2 pb-4 border-b border-slate-800/60">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <img src={flags.tw} class="w-5 h-auto inline rounded-sm" alt="台灣"> 七星岩
+            </h3>
+            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：2026/5/22(五)-5/24(日)</p>
+            <p class="text-sm">
+              活動資訊：
+              <a href="https://forms.gle/5h3pGSTyeoaGh85R7" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/5h3pGSTyeoaGh85R7
+              </a>
+            </p>
+          </div>
+
+          <!-- 澎湖 -->
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <img src={flags.tw} class="w-5 h-auto inline rounded-sm" alt="台灣"> 澎湖南方四島
+            </h3>
+            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：6/27 (六) ~ 6/29(ㄧ)</p>
+            <p class="text-sm">
+              活動資訊(填表候補)：
+              <a href="https://forms.gle/jvNAarg7MmFiAwd27" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/jvNAarg7MmFiAwd27
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- 國外活動 -->
+        <div class="bg-slate-900/90 p-6 sm:p-8 rounded-3xl border border-slate-800 shadow-xl space-y-6">
+          <h2 class="text-2xl font-black text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-2">
+            <span>✈️</span> 國外活動
+          </h2>
+
+          <!-- 菲律賓 -->
+          <div class="space-y-3 pb-4 border-b border-slate-800/60">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <img src={flags.ph} class="w-6 h-auto inline rounded-sm" alt="菲律賓"> 菲律賓
+            </h3>
+            <div class="rounded-2xl overflow-hidden border border-slate-800 max-h-56">
+              <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000066-b321eb3220/260A0604-3.jpeg" alt="2026國慶媽媽島長尾鯊" class="w-full h-full object-cover">
+            </div>
+            <p class="text-white font-semibold flex items-center gap-2">
+              <img src={flags.ph} class="w-5 h-auto inline rounded-sm" alt="菲律賓"> 2026國慶媽媽島長尾鯊
+            </p>
+            <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：2026/10/8-10/12</p>
+            <p class="text-sm">
+              活動資訊：
+              <a href="https://forms.gle/Kh9auYBwcTmXak8i7" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                https://forms.gle/Kh9auYBwcTmXak8i7
+              </a>
+            </p>
+          </div>
+
+          <!-- 馬來西亞 -->
+          <div class="space-y-4 pb-4 border-b border-slate-800/60">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <img src={flags.my} class="w-6 h-auto inline rounded-sm" alt="馬來西亞"> 馬來西亞
+            </h3>
+            <div class="space-y-2">
+              <p class="text-white font-semibold flex items-center gap-2">
+                <img src={flags.my} class="w-5 h-auto inline rounded-sm" alt="馬來西亞"> 西巴丹
+              </p>
+              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
+              <p class="text-slate-300 text-sm">🗓️ 日期：2026/5/7 - 5/12</p>
+              <p class="text-sm">
+                活動資訊：
+                <a href="https://forms.gle/vJzNHB6JpueG5JuG8" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                  https://forms.gle/vJzNHB6JpueG5JuG8
+                </a>
+              </p>
+            </div>
+            <div class="space-y-2 pt-2">
+              <p class="text-white font-semibold flex items-center gap-2">
+                <img src={flags.my} class="w-5 h-auto inline rounded-sm" alt="馬來西亞"> 西巴丹(中秋假期）
+              </p>
+              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
+              <p class="text-slate-300 text-sm">🗓️ 日期：2026/9/25-9/29</p>
+              <p class="text-sm">
+                活動資訊：
+                <a href="https://forms.gle/sj68xZTTEX9dt5KS6" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
+                  https://forms.gle/sj68xZTTEX9dt5KS6
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <!-- 印尼 -->
+          <div class="space-y-4 pb-4 border-b border-slate-800/60">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <img src={flags.id} class="w-6 h-auto inline rounded-sm" alt="印尼"> 印尼
+            </h3>
+            <div class="space-y-1">
+              <p class="text-white font-semibold flex items-center gap-2">
+                <img src={flags.id} class="w-5 h-auto inline rounded-sm" alt="印尼"> 科摩多
+              </p>
+              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
+              <p class="text-slate-300 text-sm">🗓️ 日期：2027/4/3-4/6</p>
+              <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
+            </div>
+            <div class="space-y-1 pt-2">
+              <p class="text-white font-semibold flex items-center gap-2">
+                <img src={flags.id} class="w-5 h-auto inline rounded-sm" alt="印尼"> 馬拉圖
+              </p>
+              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
+              <p class="text-slate-300 text-sm">🗓️ 日期：2027中秋節</p>
+              <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
+            </div>
+          </div>
+
+          <!-- 馬爾地夫 -->
+          <div class="space-y-2 pb-4 border-b border-slate-800/60">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <img src={flags.mv} class="w-6 h-auto inline rounded-sm" alt="馬爾地夫"> 馬爾地夫
+            </h3>
+            <p class="text-white font-semibold">經典四方線(農曆春節)</p>
+            <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：2027/2/4-2/10</p>
+            <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
+          </div>
+
+          <!-- 埃及 -->
+          <div class="space-y-2">
+            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+              <img src={flags.eg} class="w-6 h-auto inline rounded-sm" alt="埃及"> 埃及
+            </h3>
+            <p class="text-white font-semibold">紅海</p>
+            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
+            <p class="text-slate-300 text-sm">🗓️ 日期：2027國慶連假</p>
+            <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</Layout>
+FILE_EOF
+
+# 強制推送更新
+echo "🚀 正在將包含跨平台高清國旗圖片的『活動列表』推送至 GitHub..."
+git add src/pages/schedule.astro
+git commit -m "Use CDN flag images for 100% cross-platform compatibility on Windows/Mac/Mobile" || true
+git push origin main --force
+
+echo "✨ 成功發布！"
