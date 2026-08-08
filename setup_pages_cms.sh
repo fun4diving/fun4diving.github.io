@@ -1,0 +1,65 @@
+#!/bin/bash
+set -e
+
+echo "⚙️ 建立 Pages CMS 欄位配置 (.pages.yml)..."
+cat << 'YML_EOF' > .pages.yml
+media:
+  input: public/uploads
+  output: /uploads
+
+content:
+  - name: news
+    label: 最新消息 (News)
+    type: collection
+    path: src/content/news
+    format: raw
+    fields:
+      - name: title
+        label: 標題
+        type: string
+        required: true
+      - name: date
+        label: 發布日期
+        type: datetime
+      - name: image
+        label: 封面圖片
+        type: image
+      - name: summary
+        label: 摘要
+        type: string
+      - name: body
+        label: 內文
+        type: rich-text
+
+  - name: courses
+    label: 課程與價目 (Courses)
+    type: collection
+    path: src/content/courses
+    format: raw
+    fields:
+      - name: title
+        label: 課程名稱
+        type: string
+        required: true
+      - name: price
+        label: 費用 (NTD)
+        type: number
+      - name: image
+        label: 封面圖
+        type: image
+      - name: description
+        label: 簡介
+        type: string
+      - name: body
+        label: 詳細說明
+        type: rich-text
+YML_EOF
+
+echo "🧹 清除 public/admin 靜態檔..."
+rm -rf public/admin
+
+git add .
+git commit -m "Configure Pages CMS for GitHub Pages" || true
+git push origin main --force
+
+echo "✨ 設定完成！"

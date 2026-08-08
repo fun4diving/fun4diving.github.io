@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+
+echo "⚙️ 1. 設定 public/admin/config.yml 為 GitHub 原生 PKCE 模式..."
+cat << 'YML_EOF' > public/admin/config.yml
 backend:
   name: github
   repo: nike70543/fun4diving-website
@@ -33,3 +38,11 @@ collections:
       - { label: "封面圖", name: "image", widget: "image", required: false }
       - { label: "簡介", name: "description", widget: "text" }
       - { label: "詳細說明", name: "body", widget: "markdown" }
+YML_EOF
+
+echo "🚀 2. 推送至 GitHub..."
+git add public/admin/config.yml
+git commit -m "Use official Decap CMS Auth Proxy" || true
+git push origin main --force
+
+echo "✨ 完成！"
