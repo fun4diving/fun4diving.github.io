@@ -103,7 +103,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- 3. 課程及行程詳細內容區塊 -->
+  <!-- 3. 課程及行程詳細內容區塊 (整張卡片為大連結，無按鈕、無漸層黑遮擋) -->
   <section class="py-20 px-4 sm:px-6 bg-slate-900/40 border-y border-slate-800/80">
     <div class="max-w-6xl mx-auto space-y-16">
       <div class="text-center space-y-4">
@@ -113,59 +113,41 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         
-        <!-- 潛水課程卡片 (漸層改為底部 1/2 薄黑色) -->
-        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/40 transition duration-300">
+        <!-- 潛水課程卡片 (全區可點擊連結) -->
+        <a 
+          href="/fun4diving-website/courses" 
+          class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-950/40 hover:-translate-y-1 transition duration-300"
+        >
           <div class="relative h-64 overflow-hidden">
             <img 
               src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000078-325c9325cb/puerto.jpeg" 
               alt="潛水課程" 
               class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
             />
-            <!-- 漸層黑色高度縮為 1/2 且降低遮光度 -->
-            <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
           </div>
-          <div class="p-8 space-y-4 flex-grow flex flex-col justify-between text-center">
-            <div class="space-y-2">
-              <h3 class="text-2xl font-bold text-white">潛水課程</h3>
-              <p class="text-slate-400 text-sm">潛水課程及體驗潛水、Fun Dive價目都一目瞭然</p>
-            </div>
-            <div class="pt-4">
-              <a 
-                href="/fun4diving-website/courses" 
-                class="inline-block px-6 py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30 transition duration-300"
-              >
-                了解更多
-              </a>
-            </div>
+          <div class="p-8 space-y-2 text-center flex-grow flex flex-col justify-center">
+            <h3 class="text-2xl font-bold text-white group-hover:text-cyan-300 transition">潛水課程</h3>
+            <p class="text-slate-400 text-sm">潛水課程及體驗潛水、Fun Dive價目都一目瞭然</p>
           </div>
-        </div>
+        </a>
 
-        <!-- Fun Dive 行程卡片 (漸層改為底部 1/2 薄黑色) -->
-        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/40 transition duration-300">
+        <!-- Fun Dive 行程卡片 (全區可點擊連結) -->
+        <a 
+          href="/fun4diving-website/schedule" 
+          class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-950/40 hover:-translate-y-1 transition duration-300"
+        >
           <div class="relative h-64 overflow-hidden">
             <img 
               src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000012-50c3650c37/S__106807388.jpeg" 
               alt="Fun Dive行程" 
               class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
             />
-            <!-- 漸層黑色高度縮為 1/2 且降低遮光度 -->
-            <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
           </div>
-          <div class="p-8 space-y-4 flex-grow flex flex-col justify-between text-center">
-            <div class="space-y-2">
-              <h3 class="text-2xl font-bold text-white">Fun Dive行程</h3>
-              <p class="text-slate-400 text-sm">所有本島、離島、國外的Fun Dive行程規劃</p>
-            </div>
-            <div class="pt-4">
-              <a 
-                href="/fun4diving-website/schedule" 
-                class="inline-block px-6 py-3 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30 transition duration-300"
-              >
-                了解更多
-              </a>
-            </div>
+          <div class="p-8 space-y-2 text-center flex-grow flex flex-col justify-center">
+            <h3 class="text-2xl font-bold text-white group-hover:text-cyan-300 transition">Fun Dive行程</h3>
+            <p class="text-slate-400 text-sm">所有本島、離島、國外的Fun Dive行程規劃</p>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
