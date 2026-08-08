@@ -1,13 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="聯絡我們">
+<Layout title="聯絡我們 Contact">
   <section class="max-w-4xl mx-auto py-16 px-4">
-    <h1 class="text-3xl font-bold text-cyan-400 mb-8">聯絡我們 Contact</h1>
-    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 space-y-6 text-slate-200">
-      <div><h3 class="text-cyan-400 font-bold mb-1">📍 地址</h3><p>新北市瑞芳區洞頂路136-6號 (22451)</p></div>
-      <div><h3 class="text-cyan-400 font-bold mb-1">📞 電話</h3><p>+886-921-167-406</p></div>
-      <div><h3 class="text-cyan-400 font-bold mb-1">📧 Email</h3><p>fun4divingofficial@gmail.com</p></div>
+    <div class="text-center space-y-4 mb-12">
+      <span class="text-xs text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800 font-semibold tracking-wider uppercase">Contact Us</span>
+      <h1 class="text-3xl sm:text-4xl font-black text-white">與我們聯繫 Contact</h1>
+      <p class="text-slate-400 text-sm">歡迎透過電話、Email 或社群軟體隨時與 Fun肆潛水 聯繫！</p>
+      <div class="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="bg-slate-900/80 p-8 sm:p-12 rounded-2xl border border-slate-800 shadow-2xl space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-slate-200">
+        <div class="p-6 bg-slate-950/60 rounded-xl border border-slate-800/80 space-y-2">
+          <div class="text-2xl text-cyan-400">📍</div>
+          <h3 class="font-bold text-white">Fun肆地址</h3>
+          <p class="text-sm text-slate-300">新北市瑞芳區洞頂路136-6號<br><span class="text-xs text-slate-500">郵遞區號 22451</span></p>
+        </div>
+
+        <div class="p-6 bg-slate-950/60 rounded-xl border border-slate-800/80 space-y-2">
+          <div class="text-2xl text-cyan-400">📞</div>
+          <h3 class="font-bold text-white">聯絡電話</h3>
+          <p class="text-sm text-slate-300">+886-921-167-406</p>
+        </div>
+
+        <div class="p-6 bg-slate-950/60 rounded-xl border border-slate-800/80 space-y-2">
+          <div class="text-2xl text-cyan-400">📧</div>
+          <h3 class="font-bold text-white">E-Mail</h3>
+          <p class="text-sm text-slate-300 break-all">fun4divingofficial@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-slate-800">
+        <h3 class="text-white font-bold text-center mb-6">社群通訊平台 (點擊立即對話)</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <a href="https://www.facebook.com/profile.php?id=61559833718251" target="_blank" class="p-3 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 rounded-xl text-blue-300 font-bold text-sm transition">
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/fun4_diving" target="_blank" class="p-3 bg-pink-600/20 hover:bg-pink-600/30 border border-pink-500/30 rounded-xl text-pink-300 font-bold text-sm transition">
+            Instagram
+          </a>
+          <a href="http://lin.ee/lSvAOy4" target="_blank" class="p-3 bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 rounded-xl text-emerald-300 font-bold text-sm transition">
+            LINE 社群
+          </a>
+          <a href="https://wa.me/+886921167406" target="_blank" class="p-3 bg-green-600/20 hover:bg-green-600/30 border border-green-500/30 rounded-xl text-green-300 font-bold text-sm transition">
+            WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>
