@@ -1,10 +1,19 @@
+#!/bin/bash
+set -e
+
+MY_CLIENT_ID="461f2de2-60d6-4168-9ab0-83832630f12b"
+MY_TOKEN="70478ccaa9720c8e866b18d33e7d92406e3cc62d"
+
+echo "⚙️ 1. 寫入完整且包含專屬憑證的 tina/config.ts..."
+
+cat << FILE_EOF > tina/config.ts
 import { defineConfig } from "tinacms";
 
 export default defineConfig({
   branch: process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main",
   
-  clientId: process.env.TINA_CLIENT_ID || "461f2de2-60d6-4168-9ab0-83832630f12b",
-  token: process.env.TINA_TOKEN || "70478ccaa9720c8e866b18d33e7d92406e3cc62d",
+  clientId: process.env.TINA_CLIENT_ID || "${MY_CLIENT_ID}",
+  token: process.env.TINA_TOKEN || "${MY_TOKEN}",
 
   build: {
     outputFolder: "admin",
@@ -45,3 +54,14 @@ export default defineConfig({
     ],
   },
 });
+FILE_EOF
+
+echo "🔨 2. 執行正式建置..."
+npx tinacms build
+
+echo "🚀 3. 推送最終設定至 GitHub 觸發自動部署..."
+git add .
+git commit -m "Deploy TinaCMS visual admin panel with complete content schemas" || true
+git push origin main --force
+
+echo "🎉 大功告成！TinaCMS 視覺化管理後台已完美上線！"
