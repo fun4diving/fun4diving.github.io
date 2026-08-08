@@ -1,3 +1,9 @@
+#!/bin/bash
+set -e
+
+echo "⚙️ 更新 Pages CMS 設定檔 (.pages.yml)，加入所有單一頁面..."
+
+cat << 'YML_EOF' > .pages.yml
 media:
   input: public/uploads
   output: /uploads
@@ -107,3 +113,17 @@ content:
       - name: announcement
         label: 近期出海/團唱公告
         type: rich-text
+YML_EOF
+
+# 建立預設的單頁 JSON 檔（如果不存在的話）
+mkdir -p src/content/pages
+[ -f src/content/pages/index.json ] || echo '{"hero_title":"FUN 肆潛水","hero_subtitle":"探索蔚藍海底世界"}' > src/content/pages/index.json
+[ -f src/content/pages/about.json ] || echo '{"title":"關於我們","intro":"專業潛水教學與器材服務"}' > src/content/pages/about.json
+[ -f src/content/pages/contact.json ] || echo '{"phone":"","line_id":"","address":""}' > src/content/pages/contact.json
+[ -f src/content/pages/schedule.json ] || echo '{"announcement":"熱門潛水行程規劃中"}' > src/content/pages/schedule.json
+
+git add .
+git commit -m "Add index, about, contact, and schedule pages to Pages CMS" || true
+git push origin main --force
+
+echo "✨ 已成功將所有頁面同步至 Pages CMS！"
