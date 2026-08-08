@@ -29,17 +29,17 @@ const currentPath = Astro.url.pathname;
   </head>
   <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-cyan-500 selection:text-white relative">
     
-    <!-- 頂部懸浮玻璃感導覽列 -->
-    <header class="sticky top-0 z-50 w-full px-3 sm:px-6 pt-3 sm:pt-4 transition-all duration-300">
-      <div class="max-w-7xl mx-auto backdrop-blur-xl bg-slate-900/80 border border-slate-700/50 rounded-2xl shadow-2xl shadow-cyan-950/20">
-        <div class="flex items-center justify-between h-16 sm:h-20 px-4 sm:px-8">
+    <!-- 頂部凍結全寬導覽列 (Full-Width Glass Nav) -->
+    <header class="sticky top-0 z-50 w-full backdrop-blur-xl bg-slate-900/85 border-b border-slate-800/80 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-20">
           
-          <!-- LOGO 區塊：只保留純圖片，移除所有旁邊的文字 -->
+          <!-- LOGO 區塊 -->
           <a href="/fun4diving-website/" class="flex items-center group py-1">
             <img 
               src="/fun4diving-website/logowhite.png" 
               alt="Fun肆潛水 Logo" 
-              class="h-9 sm:h-11 w-auto object-contain transition duration-300 transform group-hover:scale-105"
+              class="h-8 sm:h-10 w-auto object-contain transition duration-300 transform group-hover:scale-105"
             />
           </a>
 
@@ -81,7 +81,7 @@ const currentPath = Astro.url.pathname;
         </div>
 
         <!-- 手機展開選單 -->
-        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800/80 px-4 py-4 space-y-1.5 transition-all">
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800/80 py-4 space-y-1.5 transition-all">
           {navItems.map((item) => {
             const isActive = currentPath === item.href;
             return (
