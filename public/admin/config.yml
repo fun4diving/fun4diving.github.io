@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: nike70543/fun4diving-website
+  name: git-gateway
   branch: main
 
 media_folder: "public/uploads"
