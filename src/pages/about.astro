@@ -1,23 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="關於我們 Fun 4 Diving Club">
-  <section class="max-w-4xl mx-auto py-16 px-4">
-    <div class="text-center space-y-4 mb-12">
-      <span class="text-xs text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800 font-semibold tracking-wider uppercase">About Us</span>
-      <h1 class="text-3xl sm:text-4xl font-black text-white">關於 Fun肆潛水</h1>
+<Layout title="關於我們與教練團隊">
+  <section class="max-w-5xl mx-auto py-16 px-4">
+    <div class="text-center space-y-4 mb-16">
+      <span class="text-xs text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800 font-semibold tracking-wider uppercase">About Us & Instructor</span>
+      <h1 class="text-3xl sm:text-4xl font-black text-white">關於 Fun肆潛水 與 教練團隊</h1>
       <div class="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
     </div>
 
-    <div class="bg-slate-900/80 p-8 sm:p-10 rounded-2xl border border-slate-800 shadow-2xl space-y-6 text-slate-300 leading-relaxed text-base">
-      <p class="text-lg text-white font-medium">
-        Fun肆潛水 (Fun 4 Diving Club) 本著 <span class="text-cyan-400 font-bold">「以潛會友」</span> 的宗旨，致力於提供最安全、最專業且具溫度的潛水體驗。
+    <!-- 教練介紹卡片 -->
+    <div class="bg-gradient-to-br from-slate-900 via-slate-900/90 to-ocean-900 p-8 sm:p-12 rounded-3xl border border-cyan-500/20 shadow-2xl space-y-8 mb-12">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-cyan-500/10 border-2 border-cyan-400/40 flex items-center justify-center text-5xl shrink-0 shadow-xl shadow-cyan-500/10">
+          🥽
+        </div>
+        <div class="space-y-3 text-center md:text-left">
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
+            <h2 class="text-2xl sm:text-3xl font-black text-white">宋文煒 (Jimi) 教練</h2>
+            <span class="text-xs text-cyan-300 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800 font-semibold">Fun肆潛水 創辦人</span>
+          </div>
+          <p class="text-cyan-400 text-sm font-medium">放肆水域休閒運動 ｜ 專業潛水教練 ｜ 潛水裝備檢修專業</p>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            擁有豐富教學與帶潛經驗，專精水肺潛水教學、潛水裝備保養與修護（包含 SCUBAPRO、Aqualung 等多品牌調節器與 BCD 檢修）。堅持注重細節與最高安全標準，帶領每位學員安心探索海底世界。
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-800 text-center">
+        <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800">
+          <div class="text-cyan-400 font-bold mb-1">以潛會友</div>
+          <p class="text-xs text-slate-400">打造沒有距離感的潛水社群，讓潛友們互相交流分享。</p>
+        </div>
+        <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800">
+          <div class="text-cyan-400 font-bold mb-1">安全第一</div>
+          <p class="text-xs text-slate-400">嚴格掌握潛水安全規範與裝備狀態，安心下水無後顧之憂。</p>
+        </div>
+        <div class="p-4 bg-slate-950/60 rounded-xl border border-slate-800">
+          <div class="text-cyan-400 font-bold mb-1">專業裝備支援</div>
+          <p class="text-xs text-slate-400">提供完整設備保養、氣瓶充填與優質租借體驗。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 品牌理念區塊 -->
+    <div class="bg-slate-900/80 p-8 sm:p-10 rounded-2xl border border-slate-800 text-slate-300 space-y-6 leading-relaxed">
+      <h3 class="text-2xl font-bold text-white border-l-4 border-cyan-400 pl-3">品牌理念</h3>
+      <p>
+        Fun肆潛水 (放肆水域休閒運動) 成立於東北角瑞芳洞頂路，我們不只是提供潛水證照考取，更致力於打造一個溫暖、充滿人情味的潛水聚落。
       </p>
       <p>
-        我們的基地部位於美麗的東北角瑞芳洞頂路，提供完整的水肺潛水與自由潛水訓練、專業裝備租借以及溫馨舒適的背包客房住宿。
-      </p>
-      <p>
-        不論你是剛接觸大海、想要體驗水下無重力的新手，或是希望精進技巧、考取進階證照的潛友，亦或是尋找夥伴告別「潛水孤兒」的潛水員，我們都誠摯歡迎你加入 Fun肆潛水的大家庭！
+        從初次下水的體驗潛水、OW/AOW 證照班，到離島與國外如 Puerto Galera (PG島) 的 Fun Dive 行程，我們期待陪著你一起成長，告別潛水孤兒，放肆享受藍色大海的魅力！
       </p>
     </div>
   </section>
