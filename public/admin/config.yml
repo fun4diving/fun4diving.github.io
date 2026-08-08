@@ -1,14 +1,34 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: your-github-username/fun4diving-website # 請確保替換為你的 GitHub 專案庫名稱 (如: Jimi/fun4diving-website)
   branch: main
+
 media_folder: "public/uploads"
 public_folder: "/uploads"
+
 collections:
+  # 最新消息管理
   - name: "news"
-    label: "最新消息"
+    label: "最新消息 (News)"
     folder: "src/content/news"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "標題", name: "title", widget: "string" }
-      - { label: "日期", name: "date", widget: "datetime" }
-      - { label: "內容", name: "body", widget: "markdown" }
+      - { label: "文章標題", name: "title", widget: "string" }
+      - { label: "發布日期", name: "date", widget: "datetime" }
+      - { label: "封面圖片", name: "image", widget: "image", required: false }
+      - { label: "簡短摘要", name: "summary", widget: "text" }
+      - { label: "詳細內容", name: "body", widget: "markdown" }
+
+  # 潛水課程與行程價目管理
+  - name: "courses"
+    label: "潛水課程與價目 (Courses)"
+    folder: "src/content/courses"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "課程/項目名稱", name: "title", widget: "string" }
+      - { label: "費用價格 (NTD)", name: "price", widget: "number" }
+      - { label: "列表封面圖", name: "image", widget: "image", required: false }
+      - { label: "項目特色描述", name: "description", widget: "text" }
+      - { label: "詳細說明與注意事項", name: "body", widget: "markdown" }
