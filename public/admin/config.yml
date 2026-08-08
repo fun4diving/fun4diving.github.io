@@ -2,6 +2,9 @@ backend:
   name: github
   repo: nike70543/fun4diving-website
   branch: main
+  # 使用免設定的免費 GitHub 授權代理伺服器
+  base_url: https://decap-oauth-gateway.vercel.app
+  auth_endpoint: /api/v1/authorize
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
