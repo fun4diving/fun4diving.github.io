@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 index.astro：匯入 Google Maps 上 Fun肆潛水 的真實潛友 5 星評論與姓名..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -362,3 +367,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地建置測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Update Google Maps review section with authentic 5-star user reviews" && git push origin main
+
+echo "✨ 更新完成！Google 地圖真實評價專區已更新完成並推送發布上線！"
