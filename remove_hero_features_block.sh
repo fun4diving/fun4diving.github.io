@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "✂️ 正在清理 index.astro：移除 Hero 中間累贅的特色卡片區塊，讓視覺大氣留白..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -260,3 +265,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Remove features block from Hero section for a clean and spacious cinematic look" && git push origin main
+
+echo "✨ 移除完成！Hero 區塊已化繁為簡，呈現大氣開闊的水下視覺，並已自動發布上線！"
