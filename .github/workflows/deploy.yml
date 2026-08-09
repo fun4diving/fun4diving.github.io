@@ -16,18 +16,18 @@ jobs:
         with:
           node-version: 20
 
-      # ⚡ 強力硬快取 node_modules，只要 package-lock.json 沒變就秒過！
+      # ⚡ 直接快取整包 node_modules，秒過安裝階段
       - name: Cache node_modules
-        id: cache-npm
+        id: node-modules-cache
         uses: actions/cache@v4
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
 
+      # 只有當 package-lock.json 改變時才執行真正的 npm ci
       - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit
+        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+        run: npm ci --prefer-offline --no-audit --quiet
 
       - name: Build Astro site
         run: npm run build
