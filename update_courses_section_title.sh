@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 courses.astro：為『東北角行程與住宿預約』區塊加入英文標題..."
+
+cat << 'FILE_EOF' > src/pages/courses.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -286,3 +291,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Add English subtitle to Northeast Coast trips and accommodation section" && git push origin main
+
+echo "✨ 完成！英文標題已補上並自動推送發布！"
