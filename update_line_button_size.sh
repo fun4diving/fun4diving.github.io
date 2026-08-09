@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 courses.astro：將『立即詢問課程』按鈕形狀與尺寸加大對齊其他按鈕..."
+
+cat << 'FILE_EOF' > src/pages/courses.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -286,3 +291,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Enlarge Line consultation button style and size" && git push origin main
+
+echo "✨ 完成！按鈕尺寸與外觀已完美升級，並已自動發布成功！"
