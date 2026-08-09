@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🔧 正在更新 Layout.astro 導覽列：新增『拆解Fun肆』選單項目並連結至 /courses..."
+
+cat << 'FILE_EOF' > src/layouts/Layout.astro
 ---
 interface Props {
   title: string;
@@ -231,3 +236,12 @@ const pathname = Astro.url.pathname;
     </script>
   </body>
 </html>
+FILE_EOF
+
+# 本地建置測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Add '拆解Fun肆' menu item to navigation bar linking to /courses" && git push origin main
+
+echo "✨ 完成！導覽列已成功新增『拆解Fun肆』連結，並已自動發布上線！"
