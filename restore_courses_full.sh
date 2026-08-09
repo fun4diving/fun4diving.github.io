@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在還原 courses.astro 完整原本內容，並加入『Fun肆背包房住宿預約』卡片..."
+
+cat << 'FILE_EOF' > src/pages/courses.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -196,3 +201,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Restore full courses page content with all pricing details and add hostel card" && git push origin main
+
+echo "✨ 搞定！已完全還原所有課程價目內容，並把背包房預約卡片加入頂部！"
