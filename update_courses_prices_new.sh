@@ -1,0 +1,255 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 courses.astro：將 OW 改為 11,500 NTD起，AOW 改為 10,500 NTD起..."
+
+cat << 'FILE_EOF' > src/pages/courses.astro
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="潛水課程與住宿 Course & Hostel :: Fun肆潛水-Fun 4 Diving Official">
+  <div class="py-16 px-4 sm:px-6 max-w-7xl mx-auto space-y-20">
+    
+    <!-- 頁面頂部標題區 -->
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">潛水課程與住宿</h1>
+      <p class="text-cyan-400 font-medium tracking-wide">Course & Hostel</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- 1. Fun Dive 及報名資訊 -->
+    <section class="space-y-8">
+      <div class="text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">Fun Dive及報名資訊</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- 岸潛報名 -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 transition duration-300">
+          <div class="h-64 sm:h-72 overflow-hidden relative">
+            <img 
+              src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000084-2c0072c009/puerto1.jpeg" 
+              alt="東北角岸潛說明及報名表單" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+            />
+          </div>
+          <div class="p-8 text-center space-y-4 flex-grow flex flex-col justify-between">
+            <h3 class="text-xl font-bold text-white">東北角岸潛說明及報名表單</h3>
+            <div>
+              <a 
+                href="https://forms.gle/qoXgVxxntnLdxXvC6" 
+                target="_blank" 
+                rel="nofollow noreferrer"
+                class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+              >
+                前往填寫岸潛報名表 ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 船潛報名 -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 transition duration-300">
+          <div class="h-64 sm:h-72 overflow-hidden relative">
+            <img 
+              src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000086-9c78f9c791/S__106807388-5.jpeg" 
+              alt="東北角船潛報名表單" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+            />
+          </div>
+          <div class="p-8 text-center space-y-4 flex-grow flex flex-col justify-between">
+            <h3 class="text-xl font-bold text-white">東北角船潛報名表單</h3>
+            <div>
+              <a 
+                href="https://forms.gle/W4EzgCd2M3tRzw9V8" 
+                target="_blank" 
+                rel="nofollow noreferrer"
+                class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+              >
+                前往填寫船潛報名表 ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 潛水課程費用 & 住宿 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-8">
+      
+      <!-- 左欄：潛水課程費用 -->
+      <div class="lg:col-span-7 space-y-8">
+        <h2 class="text-3xl font-bold text-white border-l-4 border-cyan-400 pl-4">潛水課程費用</h2>
+
+        <!-- 體驗潛水及 Fun Dive -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4 shadow-xl">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <h3 class="text-xl font-bold text-cyan-400">體驗潛水及Fun Dive</h3>
+            <span class="text-xs text-slate-400">價格／每人</span>
+          </div>
+          <div class="space-y-3 divide-y divide-slate-800/60">
+            <div class="flex justify-between items-center pt-2">
+              <div>
+                <div class="text-white font-bold">Experience Diving</div>
+                <div class="text-sm text-slate-400">體驗潛水</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">2,500 NTD</div>
+            </div>
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">Fun Dive</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">450 NTD起</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 潛水課程價目表 -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4 shadow-xl">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <h3 class="text-xl font-bold text-cyan-400">潛水課程</h3>
+            <span class="text-xs text-slate-400">價格／每人</span>
+          </div>
+          <div class="space-y-3 divide-y divide-slate-800/60">
+            <div class="flex justify-between items-center pt-2">
+              <div>
+                <div class="text-white font-bold">Open Water Diver Course</div>
+                <div class="text-sm text-slate-400">初階開放水域潛水員</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">11,500 NTD起</div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">Advanced Open Water Diver Course</div>
+                <div class="text-sm text-slate-400">進階開放水域潛水員</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">10,500 NTD起</div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">Enriched Air Diver Course</div>
+                <div class="text-sm text-slate-400">高氧潛水員</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">4,000 NTD</div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">Rescue Diver Course</div>
+                <div class="text-sm text-slate-400">救援潛水員</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">13,000 NTD</div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">Divemaster</div>
+                <div class="text-sm text-slate-400">潛水長</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">38,000 NTD</div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">DPV Course</div>
+                <div class="text-sm text-slate-400">水中推進器專長</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">10,000 NTD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右欄：住宿 & 社群 -->
+      <div class="lg:col-span-5 space-y-8">
+        <h2 class="text-3xl font-bold text-white border-l-4 border-cyan-400 pl-4">住宿</h2>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4 shadow-xl">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <h3 class="text-xl font-bold text-cyan-400">住宿及包棟</h3>
+            <span class="text-xs text-slate-400">價格／每晚</span>
+          </div>
+          <div class="space-y-4 divide-y divide-slate-800/60">
+            <div class="flex justify-between items-start pt-2">
+              <div>
+                <div class="text-white font-bold">Hostel</div>
+                <div class="text-sm text-slate-400">背包房</div>
+              </div>
+              <div class="text-right">
+                <div class="text-sm font-bold text-cyan-300">群友價 700 NTD</div>
+                <div class="text-sm font-mono text-slate-400">一般價 800 NTD</div>
+              </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-3">
+              <div>
+                <div class="text-white font-bold">Lounge</div>
+                <div class="text-sm text-slate-400">交誼廳床墊</div>
+              </div>
+              <div class="text-lg font-mono font-bold text-cyan-300">300 NTD</div>
+            </div>
+
+            <div class="pt-3 space-y-2">
+              <div>
+                <div class="text-white font-bold">All beds and lounge</div>
+                <div class="text-xs text-slate-400 leading-relaxed">
+                  包棟 (8張背包床 + 整個交誼廳 - 交誼廳請自備被子)
+                </div>
+              </div>
+              <div class="flex justify-between text-sm font-bold pt-1">
+                <span class="text-slate-300">平日 <span class="text-cyan-300 font-mono">4,500 NTD</span></span>
+                <span class="text-slate-300">假日 <span class="text-cyan-300 font-mono">6,500 NTD</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LINE 官方社群 QR Code 區塊 -->
+        <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-cyan-950/40 rounded-2xl border border-cyan-500/30 p-6 text-center space-y-4 shadow-xl">
+          <h3 class="text-lg font-bold text-white">所有最新消息請務必加入官方社群</h3>
+          
+          <div class="w-48 h-48 mx-auto bg-white p-2 rounded-xl shadow-lg">
+            <a href="https://line.me/ti/g2/0rGjqpJuPuLP2oemMK9mdojS2C2bE-vFuxwxBw" target="_blank" rel="nofollow noreferrer">
+              <img 
+                src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000056-66be566be7/M_591gqyyc_GW.png" 
+                alt="Fun肆潛水 LINE 社群 QR Code" 
+                class="w-full h-full object-contain"
+              />
+            </a>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">
+            加入 Line 社群獲得最新資訊和最快得到活動報名表！<br/>
+            <span class="text-cyan-400 font-bold">推薦人請寫：官方網站。</span>
+          </p>
+
+          <a 
+            href="https://line.me/ti/g2/0rGjqpJuPuLP2oemMK9mdojS2C2bE-vFuxwxBw" 
+            target="_blank" 
+            rel="nofollow noreferrer"
+            class="inline-block w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition duration-300 shadow-lg shadow-emerald-600/20"
+          >
+            點擊加入 Line 社群 ↗
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</Layout>
+FILE_EOF
+
+# 本地 build 測試
+echo "🧪 正在進行本地 build 測試..."
+npm run build
+
+echo "🚀 推送修改至 GitHub..."
+git add src/pages/courses.astro
+git commit -m "Update OW price to 11,500 NTD起 and AOW price to 10,500 NTD起" || true
+git push origin main --force
+
+echo "✨ 更新完成！請等待約 1 分鐘查看部署結果！"

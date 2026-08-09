@@ -1,0 +1,280 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 schedule.astro：更新潛水活動列表內容..."
+
+cat << 'FILE_EOF' > src/pages/schedule.astro
+---
+import Layout from '../layouts/Layout.astro';
+
+const domesticTrips = [
+  {
+    location: "七星岩",
+    organizer: "歡迎揪團",
+    date: "歡迎洽詢",
+    link: "",
+    status: "welcome"
+  },
+  {
+    location: "澎湖南方四島 (船宿)",
+    organizer: "劉大",
+    date: "9/1 (二) ~ 9/3 (四)",
+    link: "https://forms.gle/rCmMfQYpDYJGaoGg9",
+    status: "open"
+  },
+  {
+    location: "小琉球",
+    organizer: "阿豪",
+    date: "8/18 (二) ~ 8/21 (五)",
+    link: "https://forms.gle/fBRQwMBFe8ZvKP257",
+    status: "open"
+  },
+  {
+    location: "蘭嶼",
+    organizer: "老王",
+    date: "8/22 (六) ~ 8/25 (二)",
+    link: "https://forms.gle/CaCp4NkdotzzDTWb9",
+    status: "waitlist"
+  },
+  {
+    location: "綠島",
+    organizer: "老王",
+    date: "2026/9/25 (五) ~ 9/28 (一)",
+    link: "https://forms.gle/KQ4uvR1bCcsUTy5y6",
+    status: "open"
+  }
+];
+
+const overseasTrips = [
+  {
+    country: "🇵🇭 菲律賓",
+    events: [
+      {
+        title: "2026國慶媽媽島 遇見長尾鯊",
+        organizer: "阿豪, 吉米",
+        date: "2026/10/8 - 10/12",
+        link: "https://forms.gle/Kh9auYBwcTmXak8i7"
+      },
+      {
+        title: "2027 228 科隆 (Coron)",
+        organizer: "老王",
+        date: "2027/2/27 (六) - 2027/3/3 (三)",
+        link: ""
+      },
+      {
+        title: "2027 51勞動節連假 薄荷島 (Bohol)",
+        organizer: "老王",
+        date: "2027/4/30 (五) - 2027/5/4 (二)",
+        link: ""
+      }
+    ]
+  },
+  {
+    country: "🇲🇾 馬來西亞",
+    events: [
+      {
+        title: "西巴丹",
+        organizer: "阿豪, 吉米",
+        date: "2026/5/7 - 5/12",
+        link: "https://forms.gle/vJzNHB6JpueG5JuG8"
+      },
+      {
+        title: "西巴丹 (中秋假期)",
+        organizer: "阿豪, 吉米",
+        date: "2026/9/25 - 9/29",
+        link: "https://forms.gle/sj68xZTTEX9dt5KS6"
+      }
+    ]
+  },
+  {
+    country: "🇵🇼 帛琉",
+    events: [
+      {
+        title: "帛琉潛旅",
+        organizer: "老王",
+        date: "2026/10/21 (三) - 10/26 (一)",
+        link: "https://forms.gle/xe2g2QJ8Jz8VaDrT6"
+      }
+    ]
+  },
+  {
+    country: "🇹🇭 泰國",
+    events: [
+      {
+        title: "斯米蘭",
+        organizer: "阿豪, 吉米",
+        date: "2027/2/27 - 2027/3/4",
+        link: "https://forms.gle/92k6M7FaCs6d79Rh6"
+      },
+      {
+        title: "斯米蘭",
+        organizer: "老王",
+        date: "2027/3/31 (三) - 4/5 (一)",
+        link: "https://forms.gle/Lor2qp4r7LUmzVor5"
+      }
+    ]
+  },
+  {
+    country: "🇲🇻 馬爾地夫",
+    events: [
+      {
+        title: "經典四方線 (農曆春節)",
+        organizer: "阿豪, 吉米",
+        date: "2027/2/4 - 2/10",
+        link: ""
+      }
+    ]
+  },
+  {
+    country: "🇮🇩 印尼",
+    events: [
+      {
+        title: "科摩多",
+        organizer: "阿豪, 吉米",
+        date: "2027/4/3 - 4/6",
+        link: ""
+      },
+      {
+        title: "馬拉圖",
+        organizer: "阿豪, 吉米",
+        date: "2027中秋節",
+        link: ""
+      }
+    ]
+  },
+  {
+    country: "🇪🇬 埃及",
+    events: [
+      {
+        title: "紅海 (BDE)",
+        organizer: "老王",
+        date: "2027國慶連假",
+        link: ""
+      }
+    ]
+  }
+];
+---
+
+<Layout title="潛水活動列表 :: Fun肆潛水-Fun 4 Diving Official">
+  <div class="py-16 px-4 sm:px-6 max-w-6xl mx-auto space-y-16">
+    
+    <!-- 頁面頂部標題區 -->
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">潛水活動列表</h1>
+      <p class="text-cyan-400 font-medium tracking-wide">Schedule & Events</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- 1. 國內潛旅區塊 -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-3 border-l-4 border-cyan-400 pl-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">🔥 國內潛旅</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {domesticTrips.map((trip) => (
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between shadow-xl hover:border-cyan-500/40 transition duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                  <span>🔥</span> {trip.location}
+                </h3>
+                {trip.status === "waitlist" && (
+                  <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">填表候補</span>
+                )}
+                {trip.status === "welcome" && (
+                  <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">✅ 歡迎揪團</span>
+                )}
+              </div>
+              
+              <div class="text-sm text-slate-300 space-y-1">
+                <div><span class="text-slate-400">主辦：</span>{trip.organizer}</div>
+                <div><span class="text-slate-400">日期：</span><span class="font-mono text-cyan-300">{trip.date}</span></div>
+              </div>
+            </div>
+
+            <div class="pt-6">
+              {trip.link ? (
+                <a 
+                  href={trip.link} 
+                  target="_blank" 
+                  rel="nofollow noreferrer"
+                  class="block w-full py-2.5 text-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+                >
+                  填寫報名資訊 ↗
+                </a>
+              ) : (
+                <div class="w-full py-2.5 text-center rounded-xl bg-slate-800 text-slate-400 font-medium text-sm">
+                  {trip.status === "welcome" ? "歡迎直接聯繫詢問" : "活動籌備中"}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 2. 國外潛旅區塊 -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-3 border-l-4 border-cyan-400 pl-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">🔥 國外潛旅</h2>
+      </div>
+
+      <div class="space-y-8">
+        {overseasTrips.map((group) => (
+          <div class="bg-slate-900/80 rounded-2xl border border-slate-800 p-6 sm:p-8 space-y-6 shadow-xl">
+            <h3 class="text-2xl font-bold text-cyan-300 pb-2 border-b border-slate-800 flex items-center gap-2">
+              {group.country}
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {group.events.map((event) => (
+                <div class="bg-slate-950/60 rounded-xl border border-slate-800 p-5 flex flex-col justify-between space-y-4 hover:border-cyan-500/30 transition">
+                  <div class="space-y-2">
+                    <h4 class="font-bold text-white text-lg leading-snug">
+                      {event.title}
+                    </h4>
+                    <div class="text-xs sm:text-sm text-slate-300 space-y-1">
+                      <div><span class="text-slate-400">主辦：</span>{event.organizer}</div>
+                      <div><span class="text-slate-400">日期：</span><span class="font-mono text-cyan-300">{event.date}</span></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    {event.link ? (
+                      <a 
+                        href={event.link} 
+                        target="_blank" 
+                        rel="nofollow noreferrer"
+                        class="block w-full py-2 text-center rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs sm:text-sm transition duration-300"
+                      >
+                        活動報名表 ↗
+                      </a>
+                    ) : (
+                      <span class="block w-full py-2 text-center rounded-lg bg-slate-800/80 text-amber-400/90 font-medium text-xs sm:text-sm border border-amber-500/20">
+                        ⏳ 籌備中
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</Layout>
+FILE_EOF
+
+# 本地 build 測試
+echo "🧪 正在進行本地 build 測試..."
+npm run build
+
+echo "🚀 推送修改至 GitHub..."
+git add src/pages/schedule.astro
+git commit -m "Update Schedule page title and full trip listings" || true
+git push origin main --force
+
+echo "✨ 更新完成！潛水活動列表頁面已成功部署！"

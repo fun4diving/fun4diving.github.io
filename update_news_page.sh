@@ -1,0 +1,110 @@
+#!/bin/bash
+set -e
+echo "📝 正在將 Webnode 新聞頁面內容寫入 src/pages/news.astro..."
+
+cat << 'FILE_EOF' > src/pages/news.astro
+---
+import Layout from '../layouts/Layout.astro';
+
+const newsList = [
+  {
+    title: "加入Line社群可享群友優惠並即時獲得最新行程資訊",
+    date: "2025-03-05",
+    content: "透過以下連結加入Line社群即可獲得群友優惠，並第一時間最快取得最新行程資訊！同時快速結交潛友，告別潛水孤兒生涯！推薦人輸入：官方網站。",
+    image: "https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000020-c03cfc03d1/S__106807414.jpeg",
+    link: "https://line.me/ti/g2/0rGjqpJuPuLP2oemMK9mdojS2C2bE-vFuxwxBw",
+    isExternalLink: true
+  },
+  {
+    title: "OW、AOW課程團報特價",
+    date: "2025-03-05",
+    content: "即日起滿三人團報OW、AOW課程每人特價折扣1000元，高氧潛水員課程限時優惠折扣500元！",
+    image: "https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000050-7a23d7a23e/S__106807392.jpeg",
+    link: "/fun4diving-website/courses",
+    isExternalLink: false
+  }
+];
+---
+
+<Layout title="新聞 News :: Fun肆潛水-Fun 4 Diving Official">
+  <div class="py-16 px-4 sm:px-6 max-w-5xl mx-auto space-y-12">
+    
+    <!-- 頁面頂部標題區 -->
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">最新消息</h1>
+      <p class="text-cyan-400 font-medium tracking-wide">News</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- 新聞文章列表 -->
+    <div class="space-y-8">
+      {newsList.map((item) => (
+        <article class="bg-slate-900/90 rounded-2xl border border-slate-800 overflow-hidden shadow-xl hover:border-cyan-500/40 transition duration-300 flex flex-col md:flex-row group">
+          
+          <!-- 左側封面圖片 -->
+          <div class="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+            />
+          </div>
+
+          <!-- 右側內文資訊 -->
+          <div class="md:w-3/5 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex items-center gap-2">
+                <span class="px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs font-semibold">
+                  {item.date}
+                </span>
+              </div>
+              
+              <h2 class="text-2xl font-bold text-white group-hover:text-cyan-300 transition leading-snug">
+                {item.title}
+              </h2>
+              
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {item.content}
+              </p>
+            </div>
+
+            <!-- 操作按鈕 -->
+            <div class="pt-2">
+              {item.isExternalLink ? (
+                <a 
+                  href={item.link} 
+                  target="_blank" 
+                  rel="nofollow noreferrer"
+                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition duration-300 shadow-lg shadow-emerald-600/20"
+                >
+                  加入 Line 社群優惠 ↗
+                </a>
+              ) : (
+                <a 
+                  href={item.link} 
+                  class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+                >
+                  查看課程與優惠 →
+                </a>
+              )}
+            </div>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</Layout>
+FILE_EOF
+
+# 本地先測試 build
+echo "🧪 正在進行本地 build 測試..."
+npm run build
+
+echo "🚀 本地打包無誤！正在推送到 GitHub..."
+git add src/pages/news.astro
+git commit -m "Update News page to 100% match Webnode raw HTML content" || true
+git push origin main --force
+
+echo "✨ 完成！新聞頁面已順利更新完成！"
