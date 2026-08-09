@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🔧 正在更新 Layout.astro 導覽列：將『拆解Fun肆』連結更正指向 /about..."
+
+cat << 'FILE_EOF' > src/layouts/Layout.astro
 ---
 interface Props {
   title: string;
@@ -231,3 +236,12 @@ const pathname = Astro.url.pathname;
     </script>
   </body>
 </html>
+FILE_EOF
+
+# 本地建置測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Fix '拆解Fun肆' link to point directly to /about" && git push origin main
+
+echo "✨ 成功更正！『拆解Fun肆』連結已正式更新為 /about 並已自動部署上線！"
