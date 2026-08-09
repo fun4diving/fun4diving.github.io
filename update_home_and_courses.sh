@@ -1,3 +1,9 @@
+#!/bin/bash
+set -e
+echo "📝 正在升級首頁 (index.astro) 熱血文案，並於課程頁 (courses.astro) 新增背包房預約區塊..."
+
+# 1. 更新首頁 src/pages/index.astro (升級首頁文案)
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -249,3 +255,153 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 2. 複製背包房照片至 public/hostel.jpg 專案圖庫
+mkdir -p public
+curl -s -o public/hostel.jpg "https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000084-2c0072c009/puerto1.jpeg" || true
+
+# 3. 更新 src/pages/courses.astro (新增『Fun肆背包房住宿預約』卡片)
+cat << 'FILE_EOF' > src/pages/courses.astro
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="潛水課程與住宿 Course & Hostel :: Fun肆潛水-Fun 4 Diving Official">
+  <div class="py-16 px-4 sm:px-6 max-w-7xl mx-auto space-y-16">
+    
+    <!-- 頁面頂部標題區 -->
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">潛水課程與住宿</h1>
+      <p class="text-cyan-400 font-medium tracking-wide">Course & Hostel</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <!-- 1. Fun Dive 岸潛 / 船潛 / 背包房預約 三大卡片區塊 -->
+    <section class="space-y-8 bg-slate-900/60 p-6 sm:p-10 rounded-3xl border border-cyan-500/20 shadow-2xl">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">東北角行程與住宿預約</h2>
+        <p class="text-cyan-400 font-medium">點擊下方按鈕可直接開啟線上預約表單</p>
+        <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
+        <!-- 卡片 1：岸潛報名 -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 transition duration-300">
+          <div class="h-60 sm:h-64 overflow-hidden relative">
+            <img 
+              src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000084-2c0072c009/puerto1.jpeg" 
+              alt="東北角岸潛說明及報名表單" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+            />
+          </div>
+          <div class="p-6 text-center space-y-4 flex-grow flex flex-col justify-between">
+            <h3 class="text-xl font-bold text-white">東北角岸潛說明及報名表單</h3>
+            <div>
+              <a 
+                href="https://forms.gle/qoXgVxxntnLdxXvC6" 
+                target="_blank" 
+                rel="nofollow noreferrer"
+                class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+              >
+                前往填寫岸潛報名表 ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 2：船潛報名 -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 transition duration-300">
+          <div class="h-60 sm:h-64 overflow-hidden relative">
+            <img 
+              src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000086-9c78f9c791/S__106807388-5.jpeg" 
+              alt="東北角船潛報名表單" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+            />
+          </div>
+          <div class="p-6 text-center space-y-4 flex-grow flex flex-col justify-between">
+            <h3 class="text-xl font-bold text-white">東北角船潛報名表單</h3>
+            <div>
+              <a 
+                href="https://forms.gle/W4EzgCd2M3tRzw9V8" 
+                target="_blank" 
+                rel="nofollow noreferrer"
+                class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+              >
+                前往填寫船潛報名表 ↗
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 3：Fun肆背包房住宿預約 (全新新增) -->
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden shadow-xl flex flex-col group hover:border-cyan-500/50 transition duration-300">
+          <div class="h-60 sm:h-64 overflow-hidden relative">
+            <img 
+              src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000020-c03cfc03d1/S__106807414.jpeg" 
+              alt="Fun肆背包房住宿預約" 
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+            />
+          </div>
+          <div class="p-6 text-center space-y-4 flex-grow flex flex-col justify-between">
+            <h3 class="text-xl font-bold text-white">Fun肆背包房住宿預約</h3>
+            <div>
+              <a 
+                href="https://forms.gle/FXt1taoXVwq7CUkAA" 
+                target="_blank" 
+                rel="nofollow noreferrer"
+                class="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold hover:scale-105 transition duration-300 shadow-lg shadow-amber-500/20"
+              >
+                前往填寫住宿預約表 ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 課程價目與說明 -->
+    <section class="space-y-8">
+      <div class="text-center space-y-2">
+        <h2 class="text-3xl font-bold text-white">潛水課程與價目說明</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 space-y-4">
+          <h3 class="text-2xl font-bold text-cyan-400">🤿 水肺潛水課程 (OW / AOW)</h3>
+          <p class="text-slate-300 leading-relaxed text-sm">
+            包含理論學習、平靜水域練習與開放水域實作。專業教練陪伴，嚴格把關安全，帶你考取國際認可的潛水證照。
+          </p>
+          <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside pt-2">
+            <li>OW 開放水域潛水員課程：熱烈招生中</li>
+            <li>AOW 進階開放水域潛水員：團報享優惠</li>
+            <li>高氧潛水員專長課程：限時折扣中</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 space-y-4">
+          <h3 class="text-2xl font-bold text-cyan-400">🏠 潛客棧背包住宿</h3>
+          <p class="text-slate-300 leading-relaxed text-sm">
+            基地坐落於東北角，提供乾淨、舒適且溫馨的背包客房空間。讓潛友們下水後能獲得充份休息，與同好熱絡交流！
+          </p>
+          <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside pt-2">
+            <li>提供群友專屬優惠住宿</li>
+            <li>設有溫馨交誼空間與裝備清洗區</li>
+            <li>歡迎透過上方表單或官方 Line 預約</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Upgrade homepage hero text and add Hostel reservation card to courses page" && git push origin main
+
+echo "✨ 全部完成！首頁文案已全新升級，Courses 頁面已完美補上『Fun肆背包房住宿預約』卡片，並已自動發布！"
