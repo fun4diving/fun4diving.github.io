@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 index.astro：修改導潛教練文字，並新增『合法立案投保』卡片..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -280,3 +285,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Update hero feature cards to 4 items and change guide/instructor text" && git push origin main
+
+echo "✨ 完成！卡片已更新為 4 項『專業導潛及教練』與『合法立案投保』，並已自動發布上線！"
