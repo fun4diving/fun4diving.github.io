@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🎨 正在優化 index.astro：加粗並加強 Hero 內文陰影對比度，讓電腦版瀏覽清晰無比..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -276,3 +281,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Enhance hero section text font weight and text shadow for desktop clarity" && git push origin main
+
+echo "✨ 完成！文字已加粗並注入深色影襯，在電腦大螢幕上看非常清晰醒目！已自動推送更新上線！"
