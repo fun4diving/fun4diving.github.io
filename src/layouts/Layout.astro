@@ -7,12 +7,12 @@ const { title } = Astro.props;
 
 // 導覽選單項目
 const navItems = [
-  { name: '首頁 Index', href: '/fun4diving-website/' },
-  { name: '關於Fun肆潛水', href: '/fun4diving-website/about' },
-  { name: '新聞 News', href: '/fun4diving-website/news' },
-  { name: '課程與住宿 Course', href: '/fun4diving-website/courses' },
-  { name: '聯絡我們 Contact', href: '/fun4diving-website/contact' },
-  { name: '活動列表 Schedule', href: '/fun4diving-website/schedule', highlight: true },
+  { name: '首頁 Index', href: '/' },
+  { name: '關於Fun肆潛水', href: '/about' },
+  { name: '新聞 News', href: '/news' },
+  { name: '課程與住宿 Course', href: '/courses' },
+  { name: '聯絡我們 Contact', href: '/contact' },
+  { name: '活動列表 Schedule', href: '/schedule', highlight: true },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -35,9 +35,9 @@ const currentPath = Astro.url.pathname;
         <div class="flex items-center justify-between h-16 sm:h-20">
           
           <!-- LOGO 區塊 -->
-          <a href="/fun4diving-website/" class="flex items-center group py-1">
+          <a href="/" class="flex items-center group py-1">
             <img 
-              src="/fun4diving-website/logowhite.png" 
+              src="/logowhite.png" 
               alt="Fun肆潛水 Logo" 
               class="h-8 sm:h-10 w-auto object-contain transition duration-300 transform group-hover:scale-105"
             />
@@ -46,7 +46,7 @@ const currentPath = Astro.url.pathname;
           <!-- 桌機選單 -->
           <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
             {navItems.map((item) => {
-              const isActive = currentPath === item.href || (item.href !== '/fun4diving-website/' && currentPath.startsWith(item.href));
+              const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
               return (
                 <a
                   href={item.href}
