@@ -41,7 +41,8 @@ const domesticTrips = [
 
 const overseasTrips = [
   {
-    country: "🇵🇭 菲律賓",
+    countryName: "菲律賓",
+    flagCode: "ph",
     events: [
       {
         title: "2026國慶媽媽島 遇見長尾鯊",
@@ -64,7 +65,8 @@ const overseasTrips = [
     ]
   },
   {
-    country: "🇲🇾 馬來西亞",
+    countryName: "馬來西亞",
+    flagCode: "my",
     events: [
       {
         title: "西巴丹",
@@ -81,7 +83,8 @@ const overseasTrips = [
     ]
   },
   {
-    country: "🇵🇼 帛琉",
+    countryName: "帛琉",
+    flagCode: "pw",
     events: [
       {
         title: "帛琉潛旅",
@@ -92,7 +95,8 @@ const overseasTrips = [
     ]
   },
   {
-    country: "🇹🇭 泰國",
+    countryName: "泰國",
+    flagCode: "th",
     events: [
       {
         title: "斯米蘭",
@@ -109,7 +113,8 @@ const overseasTrips = [
     ]
   },
   {
-    country: "🇲🇻 馬爾地夫",
+    countryName: "馬爾地夫",
+    flagCode: "mv",
     events: [
       {
         title: "經典四方線 (農曆春節)",
@@ -120,7 +125,8 @@ const overseasTrips = [
     ]
   },
   {
-    country: "🇮🇩 印尼",
+    countryName: "印尼",
+    flagCode: "id",
     events: [
       {
         title: "科摩多",
@@ -137,7 +143,8 @@ const overseasTrips = [
     ]
   },
   {
-    country: "🇪🇬 埃及",
+    countryName: "埃及",
+    flagCode: "eg",
     events: [
       {
         title: "紅海 (BDE)",
@@ -163,7 +170,14 @@ const overseasTrips = [
     <!-- 1. 國內潛旅區塊 -->
     <section class="space-y-8">
       <div class="flex items-center gap-3 border-l-4 border-cyan-400 pl-4">
-        <h2 class="text-2xl sm:text-3xl font-bold text-white">🔥 國內潛旅</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <img 
+            src="https://flagcdn.com/tw.svg" 
+            alt="台灣國旗" 
+            class="w-8 h-auto rounded shadow-sm border border-slate-700/50 inline-block"
+          />
+          <span>國內潛旅</span>
+        </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -218,8 +232,13 @@ const overseasTrips = [
       <div class="space-y-8">
         {overseasTrips.map((group) => (
           <div class="bg-slate-900/80 rounded-2xl border border-slate-800 p-6 sm:p-8 space-y-6 shadow-xl">
-            <h3 class="text-2xl font-bold text-cyan-300 pb-2 border-b border-slate-800 flex items-center gap-2">
-              {group.country}
+            <h3 class="text-2xl font-bold text-cyan-300 pb-2 border-b border-slate-800 flex items-center gap-3">
+              <img 
+                src={`https://flagcdn.com/${group.flagCode}.svg`} 
+                alt={`${group.countryName}國旗`} 
+                class="w-8 h-auto rounded shadow-sm border border-slate-700/50 inline-block"
+              />
+              <span>{group.countryName}</span>
             </h3>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
