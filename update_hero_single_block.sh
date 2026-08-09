@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 index.astro：將 Hero 特色整合成單一區塊，並將投保說明修正為『全程投保』..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -282,3 +287,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Consolidate hero features into a single block and update insurance wording to 全程投保" && git push origin main
+
+echo "✨ 完成！特色項目已整合成單一外框區塊，『全程投保』文字已更正，網站已自動發布上線！"
