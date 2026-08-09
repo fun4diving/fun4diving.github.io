@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在精準更新 src/pages/news.astro：徹底移除新聞頁面的日期標籤..."
+
+cat << 'FILE_EOF' > src/pages/news.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -67,3 +72,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地測試打包
+npm run build
+
+# 提交並推送到 GitHub
+git add . && git commit -m "Fix news page date removal by updating correct src/pages/news.astro" && git push origin main
+
+echo "✨ 搞定！正確更新了新聞主頁面檔，等待 1 分鐘自動發布完成！"
