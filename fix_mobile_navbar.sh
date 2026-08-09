@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📱 正在更新 Layout.astro：新增手機版漢堡選單按鈕與響應式下拉選單..."
+
+cat << 'FILE_EOF' > src/layouts/Layout.astro
 ---
 interface Props {
   title: string;
@@ -213,3 +218,12 @@ const pathname = Astro.url.pathname;
     </script>
   </body>
 </html>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Fix mobile navigation bar with responsive hamburger menu toggle" && git push origin main
+
+echo "✨ 完成！手機版導覽列與漢堡選單已成功更新上線，現在手機瀏覽可以順暢展開所有選單了！"
