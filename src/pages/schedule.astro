@@ -1,263 +1,263 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// 國旗 SVG CDN 快速連結
-const flags = {
-  tw: "https://flagcdn.com/w40/tw.png",
-  ph: "https://flagcdn.com/w40/ph.png",
-  my: "https://flagcdn.com/w40/my.png",
-  id: "https://flagcdn.com/w40/id.png",
-  mv: "https://flagcdn.com/w40/mv.png",
-  eg: "https://flagcdn.com/w40/eg.png"
-};
+const domesticTrips = [
+  {
+    location: "七星岩",
+    organizer: "歡迎揪團",
+    date: "歡迎洽詢",
+    link: "",
+    status: "welcome"
+  },
+  {
+    location: "澎湖南方四島 (船宿)",
+    organizer: "劉大",
+    date: "9/1 (二) ~ 9/3 (四)",
+    link: "https://forms.gle/rCmMfQYpDYJGaoGg9",
+    status: "open"
+  },
+  {
+    location: "小琉球",
+    organizer: "阿豪",
+    date: "8/18 (二) ~ 8/21 (五)",
+    link: "https://forms.gle/fBRQwMBFe8ZvKP257",
+    status: "open"
+  },
+  {
+    location: "蘭嶼",
+    organizer: "老王",
+    date: "8/22 (六) ~ 8/25 (二)",
+    link: "https://forms.gle/CaCp4NkdotzzDTWb9",
+    status: "waitlist"
+  },
+  {
+    location: "綠島",
+    organizer: "老王",
+    date: "2026/9/25 (五) ~ 9/28 (一)",
+    link: "https://forms.gle/KQ4uvR1bCcsUTy5y6",
+    status: "open"
+  }
+];
+
+const overseasTrips = [
+  {
+    country: "🇵🇭 菲律賓",
+    events: [
+      {
+        title: "2026國慶媽媽島 遇見長尾鯊",
+        organizer: "阿豪, 吉米",
+        date: "2026/10/8 - 10/12",
+        link: "https://forms.gle/Kh9auYBwcTmXak8i7"
+      },
+      {
+        title: "2027 228 科隆 (Coron)",
+        organizer: "老王",
+        date: "2027/2/27 (六) - 2027/3/3 (三)",
+        link: ""
+      },
+      {
+        title: "2027 51勞動節連假 薄荷島 (Bohol)",
+        organizer: "老王",
+        date: "2027/4/30 (五) - 2027/5/4 (二)",
+        link: ""
+      }
+    ]
+  },
+  {
+    country: "🇲🇾 馬來西亞",
+    events: [
+      {
+        title: "西巴丹",
+        organizer: "阿豪, 吉米",
+        date: "2026/5/7 - 5/12",
+        link: "https://forms.gle/vJzNHB6JpueG5JuG8"
+      },
+      {
+        title: "西巴丹 (中秋假期)",
+        organizer: "阿豪, 吉米",
+        date: "2026/9/25 - 9/29",
+        link: "https://forms.gle/sj68xZTTEX9dt5KS6"
+      }
+    ]
+  },
+  {
+    country: "🇵🇼 帛琉",
+    events: [
+      {
+        title: "帛琉潛旅",
+        organizer: "老王",
+        date: "2026/10/21 (三) - 10/26 (一)",
+        link: "https://forms.gle/xe2g2QJ8Jz8VaDrT6"
+      }
+    ]
+  },
+  {
+    country: "🇹🇭 泰國",
+    events: [
+      {
+        title: "斯米蘭",
+        organizer: "阿豪, 吉米",
+        date: "2027/2/27 - 2027/3/4",
+        link: "https://forms.gle/92k6M7FaCs6d79Rh6"
+      },
+      {
+        title: "斯米蘭",
+        organizer: "老王",
+        date: "2027/3/31 (三) - 4/5 (一)",
+        link: "https://forms.gle/Lor2qp4r7LUmzVor5"
+      }
+    ]
+  },
+  {
+    country: "🇲🇻 馬爾地夫",
+    events: [
+      {
+        title: "經典四方線 (農曆春節)",
+        organizer: "阿豪, 吉米",
+        date: "2027/2/4 - 2/10",
+        link: ""
+      }
+    ]
+  },
+  {
+    country: "🇮🇩 印尼",
+    events: [
+      {
+        title: "科摩多",
+        organizer: "阿豪, 吉米",
+        date: "2027/4/3 - 4/6",
+        link: ""
+      },
+      {
+        title: "馬拉圖",
+        organizer: "阿豪, 吉米",
+        date: "2027中秋節",
+        link: ""
+      }
+    ]
+  },
+  {
+    country: "🇪🇬 埃及",
+    events: [
+      {
+        title: "紅海 (BDE)",
+        organizer: "老王",
+        date: "2027國慶連假",
+        link: ""
+      }
+    ]
+  }
+];
 ---
-<Layout title="Fun肆潛水活動列表 Schedule :: Fun肆潛水-Fun 4 Diving Official">
-  <section class="max-w-6xl mx-auto py-12 px-4 sm:px-6">
+
+<Layout title="潛水活動列表 :: Fun肆潛水-Fun 4 Diving Official">
+  <div class="py-16 px-4 sm:px-6 max-w-6xl mx-auto space-y-16">
     
-    <!-- 頁面標題 -->
-    <div class="text-center space-y-4 mb-12">
-      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">Fun肆潛水活動列表 Schedule</h1>
-      <div class="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    <!-- 頁面頂部標題區 -->
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">潛水活動列表</h1>
+      <p class="text-cyan-400 font-medium tracking-wide">Schedule & Events</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
     </div>
 
-    <!-- 主內容區：雙欄佈局 (與其他分頁一致的質感卡片外框) -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      
-      <!-- 左欄：Fun肆經典活動 -->
-      <div class="bg-slate-900/80 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl space-y-8 h-fit">
-        <h2 class="text-2xl font-black text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-2">
-          <span>🎉</span> Fun肆經典活動
-        </h2>
-
-        <!-- 年終感恩會 -->
-        <div class="space-y-2 p-4 bg-slate-950/60 rounded-xl border border-slate-800/80">
-          <h3 class="text-xl font-bold text-white">年終感恩會</h3>
-          <p class="text-slate-300 text-sm">🗓️ 日期：2026/03/21</p>
-          <p class="text-slate-300 text-sm">👤 主辦：老王</p>
-          <p class="text-cyan-400 text-sm font-semibold">ℹ️ 活動資訊：完美結束</p>
-        </div>
-
-        <!-- FUN肆淨灘淨海 -->
-        <div class="space-y-2 p-4 bg-slate-950/60 rounded-xl border border-slate-800/80">
-          <h3 class="text-xl font-bold text-white">FUN肆淨灘淨海</h3>
-          <p class="text-slate-300 text-sm">🗓️ 日期：2026/05/17</p>
-          <p class="text-slate-300 text-sm">👤 主辦：吉米</p>
-          <p class="text-sm">
-            ℹ️ 活動資訊：
-            <a href="https://forms.gle/fEHcuEDx6CqNmi687" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-              https://forms.gle/fEHcuEDx6CqNmi687
-            </a>
-          </p>
-        </div>
-
-        <!-- FUN肆經典烤肉趴 -->
-        <div class="space-y-2 p-4 bg-slate-950/60 rounded-xl border border-slate-800/80">
-          <h3 class="text-xl font-bold text-white">FUN肆經典烤肉趴</h3>
-          <p class="text-slate-300 text-sm">🗓️ 日期：2026/08/15</p>
-          <p class="text-slate-300 text-sm">👤 主辦：阿豪</p>
-          <p class="text-amber-400 text-sm font-semibold">ℹ️ 活動資訊：敬請期待</p>
-        </div>
+    <!-- 1. 國內潛旅區塊 -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-3 border-l-4 border-cyan-400 pl-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">🔥 國內潛旅</h2>
       </div>
 
-      <!-- 右欄：國內 & 國外潛水活動 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {domesticTrips.map((trip) => (
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between shadow-xl hover:border-cyan-500/40 transition duration-300">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                  <span>🔥</span> {trip.location}
+                </h3>
+                {trip.status === "waitlist" && (
+                  <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">填表候補</span>
+                )}
+                {trip.status === "welcome" && (
+                  <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">✅ 歡迎揪團</span>
+                )}
+              </div>
+              
+              <div class="text-sm text-slate-300 space-y-1">
+                <div><span class="text-slate-400">主辦：</span>{trip.organizer}</div>
+                <div><span class="text-slate-400">日期：</span><span class="font-mono text-cyan-300">{trip.date}</span></div>
+              </div>
+            </div>
+
+            <div class="pt-6">
+              {trip.link ? (
+                <a 
+                  href={trip.link} 
+                  target="_blank" 
+                  rel="nofollow noreferrer"
+                  class="block w-full py-2.5 text-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm hover:scale-105 transition duration-300 shadow-lg shadow-cyan-500/20"
+                >
+                  填寫報名資訊 ↗
+                </a>
+              ) : (
+                <div class="w-full py-2.5 text-center rounded-xl bg-slate-800 text-slate-400 font-medium text-sm">
+                  {trip.status === "welcome" ? "歡迎直接聯繫詢問" : "活動籌備中"}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 2. 國外潛旅區塊 -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-3 border-l-4 border-cyan-400 pl-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white">🔥 國外潛旅</h2>
+      </div>
+
       <div class="space-y-8">
-        
-        <!-- 國內潛水活動 -->
-        <div class="bg-slate-900/80 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl space-y-6">
-          <h2 class="text-2xl font-black text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-2">
-            <img src={flags.tw} class="w-6 h-auto inline rounded-sm" alt="台灣"> 國內潛水活動
-          </h2>
-
-          <!-- 東北角岸潛 -->
-          <div class="space-y-2 pb-4 border-b border-slate-800/60">
-            <h3 class="text-lg font-bold text-white">2026 東北角岸潛活動</h3>
-            <p class="text-sm">
-              活動資訊：
-              <a href="https://forms.gle/qoXgVxxntnLdxXvC6" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/qoXgVxxntnLdxXvC6
-              </a>
-            </p>
-          </div>
-
-          <!-- 東北角船潛 -->
-          <div class="space-y-2 pb-4 border-b border-slate-800/60">
-            <h3 class="text-lg font-bold text-white">2026 東北角船潛活動</h3>
-            <p class="text-sm">
-              活動資訊：
-              <a href="https://forms.gle/W4EzgCd2M3tRzw9V8" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/W4EzgCd2M3tRzw9V8
-              </a>
-            </p>
-          </div>
-
-          <!-- 小琉球 -->
-          <div class="space-y-2 pb-4 border-b border-slate-800/60">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <img src={flags.tw} class="w-5 h-auto inline rounded-sm" alt="台灣"> 小琉球潛水團
+        {overseasTrips.map((group) => (
+          <div class="bg-slate-900/80 rounded-2xl border border-slate-800 p-6 sm:p-8 space-y-6 shadow-xl">
+            <h3 class="text-2xl font-bold text-cyan-300 pb-2 border-b border-slate-800 flex items-center gap-2">
+              {group.country}
             </h3>
-            <p class="text-slate-300 text-sm">👤 主辦：阿豪+吉米</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：2026/4/3- 4/6</p>
-            <p class="text-sm">
-              活動資訊：
-              <a href="https://forms.gle/EiAYRHeriAKGyFQUA" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/EiAYRHeriAKGyFQUA
-              </a>
-            </p>
-          </div>
 
-          <!-- 綠島 -->
-          <div class="space-y-2 pb-4 border-b border-slate-800/60">
-            <h3 class="text-lg font-bold text-white">綠島</h3>
-            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：2026/5/1- 5/3</p>
-            <p class="text-sm">
-              活動資訊(填表候補)：
-              <a href="https://forms.gle/Pn9G5vVCM7ZAgx7F6" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/Pn9G5vVCM7ZAgx7F6
-              </a>
-            </p>
-          </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {group.events.map((event) => (
+                <div class="bg-slate-950/60 rounded-xl border border-slate-800 p-5 flex flex-col justify-between space-y-4 hover:border-cyan-500/30 transition">
+                  <div class="space-y-2">
+                    <h4 class="font-bold text-white text-lg leading-snug">
+                      {event.title}
+                    </h4>
+                    <div class="text-xs sm:text-sm text-slate-300 space-y-1">
+                      <div><span class="text-slate-400">主辦：</span>{event.organizer}</div>
+                      <div><span class="text-slate-400">日期：</span><span class="font-mono text-cyan-300">{event.date}</span></div>
+                    </div>
+                  </div>
 
-          <!-- 墾丁七星岩 -->
-          <div class="space-y-2 pb-4 border-b border-slate-800/60">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <img src={flags.tw} class="w-5 h-auto inline rounded-sm" alt="台灣"> 七星岩
-            </h3>
-            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：2026/5/22(五)-5/24(日)</p>
-            <p class="text-sm">
-              活動資訊：
-              <a href="https://forms.gle/5h3pGSTyeoaGh85R7" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/5h3pGSTyeoaGh85R7
-              </a>
-            </p>
-          </div>
-
-          <!-- 澎湖 -->
-          <div class="space-y-2">
-            <h3 class="text-lg font-bold text-white flex items-center gap-2">
-              <img src={flags.tw} class="w-5 h-auto inline rounded-sm" alt="台灣"> 澎湖南方四島
-            </h3>
-            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：6/27 (六) ~ 6/29(ㄧ)</p>
-            <p class="text-sm">
-              活動資訊(填表候補)：
-              <a href="https://forms.gle/jvNAarg7MmFiAwd27" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/jvNAarg7MmFiAwd27
-              </a>
-            </p>
-          </div>
-        </div>
-
-        <!-- 國外活動 -->
-        <div class="bg-slate-900/80 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-xl space-y-6">
-          <h2 class="text-2xl font-black text-cyan-400 border-b border-slate-800 pb-4 flex items-center gap-2">
-            <span>✈️</span> 國外活動
-          </h2>
-
-          <!-- 菲律賓 -->
-          <div class="space-y-3 pb-4 border-b border-slate-800/60">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2">
-              <img src={flags.ph} class="w-6 h-auto inline rounded-sm" alt="菲律賓"> 菲律賓
-            </h3>
-            <div class="rounded-xl overflow-hidden border border-slate-800 max-h-56">
-              <img src="https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000066-b321eb3220/260A0604-3.jpeg" alt="2026國慶媽媽島長尾鯊" class="w-full h-full object-cover">
-            </div>
-            <p class="text-white font-semibold flex items-center gap-2">
-              <img src={flags.ph} class="w-5 h-auto inline rounded-sm" alt="菲律賓"> 2026國慶媽媽島長尾鯊
-            </p>
-            <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：2026/10/8-10/12</p>
-            <p class="text-sm">
-              活動資訊：
-              <a href="https://forms.gle/Kh9auYBwcTmXak8i7" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                https://forms.gle/Kh9auYBwcTmXak8i7
-              </a>
-            </p>
-          </div>
-
-          <!-- 馬來西亞 -->
-          <div class="space-y-4 pb-4 border-b border-slate-800/60">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2">
-              <img src={flags.my} class="w-6 h-auto inline rounded-sm" alt="馬來西亞"> 馬來西亞
-            </h3>
-            <div class="space-y-2">
-              <p class="text-white font-semibold flex items-center gap-2">
-                <img src={flags.my} class="w-5 h-auto inline rounded-sm" alt="馬來西亞"> 西巴丹
-              </p>
-              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
-              <p class="text-slate-300 text-sm">🗓️ 日期：2026/5/7 - 5/12</p>
-              <p class="text-sm">
-                活動資訊：
-                <a href="https://forms.gle/vJzNHB6JpueG5JuG8" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                  https://forms.gle/vJzNHB6JpueG5JuG8
-                </a>
-              </p>
-            </div>
-            <div class="space-y-2 pt-2">
-              <p class="text-white font-semibold flex items-center gap-2">
-                <img src={flags.my} class="w-5 h-auto inline rounded-sm" alt="馬來西亞"> 西巴丹(中秋假期）
-              </p>
-              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
-              <p class="text-slate-300 text-sm">🗓️ 日期：2026/9/25-9/29</p>
-              <p class="text-sm">
-                活動資訊：
-                <a href="https://forms.gle/sj68xZTTEX9dt5KS6" target="_blank" rel="nofollow" class="text-cyan-400 hover:text-cyan-300 underline break-all">
-                  https://forms.gle/sj68xZTTEX9dt5KS6
-                </a>
-              </p>
+                  <div>
+                    {event.link ? (
+                      <a 
+                        href={event.link} 
+                        target="_blank" 
+                        rel="nofollow noreferrer"
+                        class="block w-full py-2 text-center rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs sm:text-sm transition duration-300"
+                      >
+                        活動報名表 ↗
+                      </a>
+                    ) : (
+                      <span class="block w-full py-2 text-center rounded-lg bg-slate-800/80 text-amber-400/90 font-medium text-xs sm:text-sm border border-amber-500/20">
+                        ⏳ 籌備中
+                      </span>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-
-          <!-- 印尼 -->
-          <div class="space-y-4 pb-4 border-b border-slate-800/60">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2">
-              <img src={flags.id} class="w-6 h-auto inline rounded-sm" alt="印尼"> 印尼
-            </h3>
-            <div class="space-y-1">
-              <p class="text-white font-semibold flex items-center gap-2">
-                <img src={flags.id} class="w-5 h-auto inline rounded-sm" alt="印尼"> 科摩多
-              </p>
-              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
-              <p class="text-slate-300 text-sm">🗓️ 日期：2027/4/3-4/6</p>
-              <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
-            </div>
-            <div class="space-y-1 pt-2">
-              <p class="text-white font-semibold flex items-center gap-2">
-                <img src={flags.id} class="w-5 h-auto inline rounded-sm" alt="印尼"> 馬拉圖
-              </p>
-              <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
-              <p class="text-slate-300 text-sm">🗓️ 日期：2027中秋節</p>
-              <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
-            </div>
-          </div>
-
-          <!-- 馬爾地夫 -->
-          <div class="space-y-2 pb-4 border-b border-slate-800/60">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2">
-              <img src={flags.mv} class="w-6 h-auto inline rounded-sm" alt="馬爾地夫"> 馬爾地夫
-            </h3>
-            <p class="text-white font-semibold">經典四方線(農曆春節)</p>
-            <p class="text-slate-300 text-sm">👤 主辦：阿豪,吉米</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：2027/2/4-2/10</p>
-            <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
-          </div>
-
-          <!-- 埃及 -->
-          <div class="space-y-2">
-            <h3 class="text-xl font-bold text-white flex items-center gap-2">
-              <img src={flags.eg} class="w-6 h-auto inline rounded-sm" alt="埃及"> 埃及
-            </h3>
-            <p class="text-white font-semibold">紅海</p>
-            <p class="text-slate-300 text-sm">👤 主辦：老王</p>
-            <p class="text-slate-300 text-sm">🗓️ 日期：2027國慶連假</p>
-            <p class="text-amber-400 text-sm">ℹ️ 活動資訊：籌備中</p>
-          </div>
-
-        </div>
+        ))}
       </div>
+    </section>
 
-    </div>
-
-  </section>
+  </div>
 </Layout>
