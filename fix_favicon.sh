@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🔧 正在更新 Layout.astro head 標籤，將 Favicon 重新指定為 /favicon.png..."
+
+cat << 'FILE_EOF' > src/layouts/Layout.astro
 ---
 interface Props {
   title: string;
@@ -232,3 +237,12 @@ const pathname = Astro.url.pathname;
     </script>
   </body>
 </html>
+FILE_EOF
+
+# 打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Update favicon link tag in Layout.astro to /favicon.png" && git push origin main
+
+echo "✨ 完成！favicon.png 連結已重新設定並部署發布上線！"
