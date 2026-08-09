@@ -1,6 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const classicEvents = [
+  {
+    title: "2026年度感恩宴會",
+    organizer: "",
+    date: "",
+    link: "",
+    status: "ended"
+  },
+  {
+    title: "2026 年度 Fun肆 淨灘靜海活動",
+    organizer: "",
+    date: "",
+    link: "",
+    status: "ended"
+  },
+  {
+    title: "2026 年度 Fun肆 大會烤",
+    organizer: "阿豪 (協辦：劉大, 胖胖, 老王, 吉米)",
+    date: "2026/08/15",
+    link: "https://forms.gle/ydiHKFiDNGCHbbDD7",
+    status: "open"
+  }
+];
+
 const domesticTrips = [
   {
     location: "七星岩",
@@ -166,6 +190,59 @@ const overseasTrips = [
       <p class="text-cyan-400 font-medium tracking-wide">Schedule & Events</p>
       <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
     </div>
+
+    <!-- 0. Fun肆潛水 年度經典活動 區塊 -->
+    <section class="space-y-8">
+      <div class="flex items-center gap-3 border-l-4 border-amber-400 pl-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white flex items-center gap-3">
+          <span>🏆 Fun肆潛水 年度經典活動</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {classicEvents.map((item) => (
+          <div class="bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between shadow-xl hover:border-amber-500/40 transition duration-300">
+            <div class="space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-xl font-bold text-white leading-snug">
+                  {item.title}
+                </h3>
+                {item.status === "ended" && (
+                  <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-slate-800 text-slate-400 border border-slate-700 shrink-0">已結束</span>
+                )}
+                {item.status === "open" && (
+                  <span class="px-2.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">🔥 熱烈報名中</span>
+                )}
+              </div>
+              
+              {item.organizer && (
+                <div class="text-sm text-slate-300 space-y-1 pt-1">
+                  <div><span class="text-slate-400">主辦：</span>{item.organizer}</div>
+                  {item.date && <div><span class="text-slate-400">日期：</span><span class="font-mono text-cyan-300">{item.date}</span></div>}
+                </div>
+              )}
+            </div>
+
+            <div class="pt-6">
+              {item.link ? (
+                <a 
+                  href={item.link} 
+                  target="_blank" 
+                  rel="nofollow noreferrer"
+                  class="block w-full py-2.5 text-center rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 text-white font-bold text-sm hover:scale-105 transition duration-300 shadow-lg shadow-amber-500/20"
+                >
+                  填寫報名表單 ↗
+                </a>
+              ) : (
+                <div class="w-full py-2.5 text-center rounded-xl bg-slate-800/60 text-slate-500 font-medium text-sm">
+                  活動已圓滿結束
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
 
     <!-- 1. 國內潛旅區塊 -->
     <section class="space-y-8">
