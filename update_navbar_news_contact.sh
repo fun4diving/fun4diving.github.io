@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🔧 正在更新 Layout.astro 導覽列：新增『最新消息 News』選單，並將『聯絡我們 Contact』修正連結至 /contact..."
+
+cat << 'FILE_EOF' > src/layouts/Layout.astro
 ---
 interface Props {
   title: string;
@@ -128,3 +133,12 @@ const pathname = Astro.url.pathname;
 
   </body>
 </html>
+FILE_EOF
+
+# 本地建置測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Add News link to navbar and update Contact link to /contact" && git push origin main
+
+echo "✨ 完成！導覽列已加入『最新消息 News』，並將『聯絡我們』正確連接至 /contact！"
