@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🎨 正在將 Hero 大圖區塊與『關於Fun肆』融合為單一高質感 Banner..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -256,3 +261,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Merge Hero and About sections into a single cohesive banner" && git push origin main
+
+echo "✨ 融合完成！Hero 區塊已升級並自動發布成功！"
