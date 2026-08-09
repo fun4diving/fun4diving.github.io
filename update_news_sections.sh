@@ -1,3 +1,9 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新首頁 (index.astro) 與新聞頁 (news/index.astro)：移除日期並新增首頁閱讀更多按鈕..."
+
+# 1. 更新 src/pages/index.astro (首頁)
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -231,3 +237,80 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 2. 更新 src/pages/news/index.astro (新聞內頁列表，確保也移除日期)
+cat << 'FILE_EOF' > src/pages/news/index.astro
+---
+import Layout from '../../layouts/Layout.astro';
+
+const newsItems = [
+  {
+    slug: "line-community",
+    title: "加入Line社群可享群友優惠並即時獲得最新行程資訊",
+    summary: "透過以下連結加入Line社群即可獲得群友優惠，並第一時間最快取得最新行程資訊！同時快速結交潛友，告別潛水孤兒生涯！推薦人輸入：官方網站。",
+    image: "https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000020-c03cfc03d1/S__106807414.jpeg"
+  },
+  {
+    slug: "course-discount",
+    title: "OW、AOW課程團報特價",
+    summary: "即日起滿三人團報OW、AOW課程每人特價折扣1000元，高氧潛水員課程限時優惠折扣500元！",
+    image: "https://b1c75e2b05.cbaul-cdnwnd.com/f7e4422cd6db309143b73b292a218cc3/200000050-7a23d7a23e/S__106807392.jpeg"
+  }
+];
+---
+
+<Layout title="新聞 News :: Fun肆潛水-Fun 4 Diving Official">
+  <div class="py-16 px-4 sm:px-6 max-w-5xl mx-auto space-y-12">
+    
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">最新消息</h1>
+      <p class="text-cyan-400 font-medium tracking-wide">News & Updates</p>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="space-y-8">
+      {newsItems.map((news) => (
+        <article class="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-8 flex flex-col md:flex-row gap-8 items-center shadow-xl group hover:border-cyan-500/40 transition duration-300">
+          <a href={`/news/${news.slug}`} class="w-full md:w-72 h-48 shrink-0 overflow-hidden rounded-xl">
+            <img 
+              src={news.image} 
+              alt={news.title} 
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            />
+          </a>
+          <div class="space-y-4 flex-grow flex flex-col justify-between h-full w-full">
+            <div class="space-y-2">
+              <h2 class="text-2xl font-bold text-white hover:text-cyan-400 transition">
+                <a href={`/news/${news.slug}`}>{news.title}</a>
+              </h2>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                {news.summary}
+              </p>
+            </div>
+            <div class="pt-2">
+              <a 
+                href={`/news/${news.slug}`} 
+                class="inline-flex items-center gap-1.5 text-cyan-400 font-bold text-sm hover:text-cyan-300 transition"
+              >
+                閱讀更多 ↗
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並推播
+git add src/pages/index.astro src/pages/news/index.astro
+git commit -m "Remove news dates and add Read More buttons to home page news section" || true
+git push origin main
+
+echo "✨ 更新完成！最新消息區塊日期已移除，首頁按鈕已補上！"
