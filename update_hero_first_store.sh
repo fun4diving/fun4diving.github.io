@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🎨 正在更新 index.astro Hero 門面區塊：融入『東北角Fun Dive第一店』，其餘區塊完全不動..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -276,3 +281,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Update Hero section with '東北角Fun Dive第一店' and 4 core design principles" && git push origin main
+
+echo "✨ 更新完成！『東北角Fun Dive第一店』已完美融入 Hero 門面，其餘區塊完全保留，並已自動發布上線！"
