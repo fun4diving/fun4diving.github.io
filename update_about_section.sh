@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "🎨 正在美化 index.astro 中的『關於Fun肆』區塊..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -287,3 +292,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Enhance About section visual styling on homepage" && git push origin main
+
+echo "✨ 升級完成！『關於Fun肆』區塊已美化完畢，程式碼已自動推送發布！"
