@@ -1,3 +1,96 @@
+#!/bin/bash
+set -e
+echo "📝 正在復原導覽列選單、加入右下角浮動 LINE 按鈕、移除相片牆，並導入 Google Maps 真實評價專區..."
+
+# 1. 更新 Layout.astro：復原原版導覽列 + 設置右下角常駐浮動 LINE 按鈕
+cat << 'FILE_EOF' > src/layouts/Layout.astro
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased">
+    
+    <!-- 原版頂部導覽列 Header Navigation -->
+    <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 shadow-2xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="text-xl sm:text-2xl font-black text-white tracking-wider group-hover:text-cyan-400 transition">
+            FUN肆潛水
+          </span>
+        </a>
+
+        <!-- 主選單連結 (已復原原版選單樣式) -->
+        <nav class="hidden md:flex items-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium">
+          <a href="/" class="px-3.5 py-1.5 rounded-full bg-cyan-600/30 text-cyan-300 border border-cyan-500/40">首頁 Index</a>
+          <a href="/courses" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition">關於Fun肆潛水</a>
+          <a href="/courses" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition">課程與住宿 Course</a>
+          <a href="http://lin.ee/lSvAOy4" target="_blank" rel="nofollow noreferrer" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition">聯絡我們 Contact</a>
+          <a href="/schedule" class="px-3.5 py-1.5 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700 transition">活動列表 Schedule</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 主要頁面內容 -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- 右下角常駐浮動 LINE 諮詢按鈕 -->
+    <a 
+      href="http://lin.ee/lSvAOy4" 
+      target="_blank" 
+      rel="nofollow noreferrer"
+      aria-label="LINE 快速諮詢"
+      class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm px-5 py-3 rounded-full shadow-2xl shadow-emerald-600/50 border border-emerald-400/40 transform hover:scale-108 transition-all duration-300"
+    >
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+      </span>
+      <span>💬 LINE 快速諮詢</span>
+    </a>
+
+    <!-- 頁尾 Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-12 px-4 sm:px-6 text-center text-slate-400 text-sm space-y-4">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="space-y-1 text-left">
+          <p class="font-bold text-white text-base">Fun肆潛水 Fun 4 Diving</p>
+          <p class="text-xs text-slate-400">東北角 Fun Dive 第一店 ‧ 專業導潛 ‧ 潛水課程 ‧ 背包客房</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs text-slate-300">
+          <a href="/courses" class="hover:text-cyan-400">課程住宿</a>
+          <span>•</span>
+          <a href="/schedule" class="hover:text-cyan-400">行程預約</a>
+          <span>•</span>
+          <a href="http://lin.ee/lSvAOy4" target="_blank" rel="nofollow noreferrer" class="hover:text-emerald-400">LINE 社群</a>
+        </div>
+      </div>
+      <div class="text-xs text-slate-400 pt-6 border-t border-slate-900">
+        © {new Date().getFullYear()} Fun 4 Diving Official. All rights reserved.
+      </div>
+    </footer>
+
+  </body>
+</html>
+FILE_EOF
+
+
+# 2. 更新 index.astro：移除相片牆，導入 Google Maps 真實評價專區
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -362,3 +455,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Restore original navbar, convert LINE button to floating widget, remove photo gallery, and embed Google Maps review section" && git push origin main
+
+echo "✨ 完成！原版導覽列已完全恢復、LINE 改為右下角常駐浮動按鈕、相片牆已移除，並已成功加入 Google Maps 5 星評價專區並推送發布！"
