@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 index.astro：將『Fun Dive行程』改名為『潛旅及活動行程』..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -280,3 +285,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Rename Fun Dive card title to '潛旅及活動行程' on index page" && git push origin main
+
+echo "✨ 修改完成！卡片標題已成功改為『潛旅及活動行程』並自動發布上線！"
