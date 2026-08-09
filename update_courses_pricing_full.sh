@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 courses.astro 價目表：新增專業課程與完整住宿/包棟定價..."
+
+cat << 'FILE_EOF' > src/pages/courses.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -274,3 +279,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Update full course and hostel pricing tables on courses page" && git push origin main
+
+echo "✨ 更新完成！專業課程與住宿包棟價目表已全部更新完畢並自動發布！"
