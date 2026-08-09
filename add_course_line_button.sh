@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 courses.astro：在潛水課程價目表下方新增『立即詢問課程』Line 連結按鈕..."
+
+cat << 'FILE_EOF' > src/pages/courses.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -286,3 +291,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地打包測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Add Line consultation button below course pricing grid" && git push origin main
+
+echo "✨ 新增完成！『立即詢問課程 ↗』按鈕已掛載成功並自動推送上線！"
