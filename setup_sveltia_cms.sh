@@ -1,16 +1,29 @@
 #!/bin/bash
 set -e
 
-echo "⚙️ 更新 Decap CMS 設定檔，改用公共 OAuth Gateway..."
+echo "📦 1. 將 Admin 介面替換為 Sveltia CMS..."
+mkdir -p public/admin
 
+cat << 'HTML_EOF' > public/admin/index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FUN 肆潛水 - 視覺化內容管理</title>
+    <!-- 引入 Sveltia CMS 官方核心 -->
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  </head>
+  <body></body>
+</html>
+HTML_EOF
+
+echo "⚙️ 2. 設定免 Netlify 的 GitHub 軸心配置..."
 cat << 'YML_EOF' > public/admin/config.yml
 backend:
   name: github
   repo: nike70543/fun4diving-website
   branch: main
-  # 使用免設定的免費 GitHub 授權代理伺服器
-  base_url: https://decap-oauth-gateway.vercel.app
-  auth_endpoint: /api/v1/authorize
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -65,8 +78,8 @@ collections:
       - { label: "詳細說明", name: "body", widget: "markdown" }
 YML_EOF
 
-git add public/admin/config.yml
-git commit -m "Fix Decap CMS OAuth endpoint for GitHub Pages" || true
+git add public/admin/
+git commit -m "Switch to Sveltia CMS for native GitHub Pages OAuth" || true
 git push origin main --force
 
-echo "✨ 已更新授權代理！"
+echo "✨ 已切換至 Sveltia CMS 並完成推送！"

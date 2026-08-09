@@ -1,16 +1,12 @@
 #!/bin/bash
 set -e
 
-echo "⚙️ 更新 Decap CMS 設定檔，改用公共 OAuth Gateway..."
+echo "⚙️ 更新 Decap CMS config.yml 為 Netlify 生態系配置..."
 
 cat << 'YML_EOF' > public/admin/config.yml
 backend:
-  name: github
-  repo: nike70543/fun4diving-website
+  name: git-gateway
   branch: main
-  # 使用免設定的免費 GitHub 授權代理伺服器
-  base_url: https://decap-oauth-gateway.vercel.app
-  auth_endpoint: /api/v1/authorize
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -66,7 +62,7 @@ collections:
 YML_EOF
 
 git add public/admin/config.yml
-git commit -m "Fix Decap CMS OAuth endpoint for GitHub Pages" || true
+git commit -m "Configure Decap CMS to use Netlify Git Gateway" || true
 git push origin main --force
 
-echo "✨ 已更新授權代理！"
+echo "✨ 已成功完成 GitHub 推送！"
