@@ -1,3 +1,8 @@
+#!/bin/bash
+set -e
+echo "📝 正在更新 index.astro：將 Hero 主標題『釋放渴望，FUN 肆入海！』設定為直接斷成兩行..."
+
+cat << 'FILE_EOF' > src/pages/index.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -365,3 +370,12 @@ import Layout from '../layouts/Layout.astro';
 
   </div>
 </Layout>
+FILE_EOF
+
+# 本地建置測試
+npm run build
+
+# Git 提交並自動推送至 GitHub
+git add . && git commit -m "Update H1 title line break with explicit <br /> tag" && git push origin main
+
+echo "✨ 完成！Hero 主標題已修復為直接斷成兩行，排版乾淨利落並已自動部署上線！"
