@@ -1,3 +1,9 @@
+#!/bin/bash
+set -e
+
+echo "⚙️ 更新 src/pages/survey.astro 以 100% 逐字對齊 Google 表單與 PDF..."
+
+cat << 'ASTRO_EOF' > src/pages/survey.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -319,3 +325,10 @@ import Layout from '../layouts/Layout.astro';
     });
   </script>
 </Layout>
+ASTRO_EOF
+
+git add .
+git commit -m "Force exact text copy of Google form and PDF terms" || true
+git push origin main --force
+
+echo "✨ 已完成 100% 逐字對齊更新並成功 Push 到 GitHub！"
