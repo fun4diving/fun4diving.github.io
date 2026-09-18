@@ -8,53 +8,15 @@ import Layout from '../layouts/Layout.astro';
       
       <!-- 標題與說明 -->
       <h1 class="text-2xl sm:text-3xl font-bold text-center text-blue-900 mb-2">FUN 肆潛水 - 水域遊憩活動特別風險聲明與責任限制切結書</h1>
-      <p class="text-xs text-gray-500 text-center mb-8">（報名線上欄位 / 電子簽署專用條款）</p>
+      <p class="text-xs text-gray-500 text-center mb-8">（報名線上欄位 / 紙本簽署專用條款）</p>
 
       <form id="full-survey-form" class="space-y-6">
         
-        <!-- 一、基本資料 -->
-        <div class="space-y-4 border-b border-gray-200 pb-6">
-          <h2 class="text-lg font-semibold text-blue-800 border-l-4 border-blue-600 pl-2">一、 參與者基本資料</h2>
-          
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium mb-1">參與者姓名 (立切結書人) <span class="text-red-500">*</span></label>
-              <input type="text" name="name" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="請輸入中文姓名" />
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium mb-1">身分證字號 / 護照號碼 <span class="text-red-500">*</span></label>
-              <input type="text" name="id_number" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="保險辦理與核對身分使用" />
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium mb-1">聯絡電話 <span class="text-red-500">*</span></label>
-              <input type="tel" name="phone" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="09xx-xxx-xxx" />
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium mb-1">出生年月日 <span class="text-red-500">*</span></label>
-              <input type="date" name="birthday" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 outline-none" />
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium mb-1">緊急聯絡人姓名與關係 <span class="text-red-500">*</span></label>
-              <input type="text" name="emergency_name" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="例如：王小明 (父親)" />
-            </div>
-
-            <div>
-              <label class="block text-sm font-medium mb-1">緊急聯絡人電話 <span class="text-red-500">*</span></label>
-              <input type="tel" name="emergency_phone" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-2 focus:ring-blue-500 outline-none" />
-            </div>
-          </div>
-        </div>
-
-        <!-- 二、聲明書全文（可滾動閱覽框） -->
+        <!-- 一、 切結書全文（可滾動閱覽框） -->
         <div class="space-y-3 border-b border-gray-200 pb-6">
-          <h2 class="text-lg font-semibold text-blue-800 border-l-4 border-blue-600 pl-2">二、 切結書詳細條款內容</h2>
-          <p class="text-xs text-gray-500">親愛的活動參與者您好：為了確保您的合法權益及生命財產安全，在您報名參與本潛店（以下簡稱「本公司」）所組織、安排或指導之水域遊憩活動（包括但不限於水肺潛水、船潛、自由潛水、浮潛等）前，請務必詳細閱讀、充分理解並同意本切結書之各項條款。</p>
+          <p class="text-sm text-gray-700 leading-relaxed">親愛的活動參與者您好：<br>為了確保您的合法權益及生命財產安全，在您報名參與本潛店（以下簡稱「本公司」）所組織、安排或指導之水域遊憩活動（包括但不限於水肺潛水、船潛、自由潛水、浮潛等）前，請務必詳細閱讀、充分理解並同意本切結書之各項條款。當您勾選同意或簽名時，即視為您已完全理解並願意承擔活動相關風險。</p>
 
-          <div class="bg-gray-50 p-4 rounded-lg border border-gray-300 h-64 overflow-y-scroll text-xs text-gray-700 leading-relaxed space-y-4">
+          <div class="bg-gray-50 p-4 rounded-lg border border-gray-300 h-64 overflow-y-scroll text-xs text-gray-700 leading-relaxed space-y-4 mt-4">
             <div>
               <h3 class="font-bold text-gray-900 mb-1">一、 水域活動特別已知風險聲明</h3>
               <p>1. 本人充分知悉並理解，水域遊憩活動（特別是深海潛水、船潛活動）具有不可預測之環境風險，包括但不限於：突發性極端海流（如上升流、下層流、洗衣機流）、海象驟變、能見度惡化、水下生物攻擊及船艇機械操作環境等。</p>
@@ -93,31 +55,62 @@ import Layout from '../layouts/Layout.astro';
             <label class="flex items-start space-x-2 bg-blue-50 p-3 rounded-lg border border-blue-200 cursor-pointer">
               <input type="checkbox" name="agreed_terms" required class="mt-1 rounded text-blue-600 focus:ring-blue-500" />
               <span class="text-xs text-blue-900 font-medium">
-                我已詳細閱讀、完全理解並同意上述『水域遊憩活動特別風險聲明與責任限制切結書』之全部內容，並確認自身無上述不適宜潛水之疾病。<span class="text-red-500">* (必勾選)</span>
+                我已詳細閱讀、完全理解並同意上述『水域遊憩活動特別風險聲明與責任限制切結書』之全部內容，並確認自身無上述不適宜潛水之疾病。<span class="text-red-500">* (必填)</span>
               </span>
             </label>
           </div>
         </div>
 
-        <!-- 三、未成年人法定代理人欄位 -->
-        <div class="space-y-3 border-b border-gray-200 pb-6 bg-yellow-50/50 p-4 rounded-lg border border-yellow-200">
-          <h2 class="text-sm font-bold text-yellow-900">未滿 18 歲參與者加填欄位 (法定代理人)</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-            <div>
-              <label class="block text-gray-700 font-medium mb-1">法定代理人姓名</label>
-              <input type="text" name="guardian_name" class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white" placeholder="未滿18歲者必填" />
+        <!-- 二、 立切結書人與資料填寫 -->
+        <div class="space-y-4 border-b border-gray-200 pb-6">
+          <div class="bg-gray-100 p-4 rounded-lg border border-gray-200">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              
+              <!-- 左側：立切結書人 -->
+              <div class="space-y-3 border-b md:border-b-0 md:border-r border-gray-300 pb-4 md:pb-0 md:pr-4">
+                <div>
+                  <label class="block text-sm font-bold mb-1">立切結書人 (參與者姓名) <span class="text-red-500">*</span></label>
+                  <input type="text" name="name" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none" />
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-1">身分證字號 / 護照號碼 <span class="text-red-500">*</span></label>
+                  <input type="text" name="id_number" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none" />
+                </div>
+              </div>
+
+              <!-- 右側：緊急聯絡人與法定代理人 -->
+              <div class="space-y-3 md:pl-4">
+                 <div>
+                  <label class="block text-sm font-bold mb-1 text-red-700">緊急聯絡人 姓名/關係 <span class="text-red-500">*</span></label>
+                  <input type="text" name="emergency_name_relation" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="例如：王小明 / 父親" />
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-1 text-red-700">緊急聯絡人 電話 <span class="text-red-500">*</span></label>
+                  <input type="tel" name="emergency_phone" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none" />
+                </div>
+              </div>
             </div>
-            <div>
-              <label class="block text-gray-700 font-medium mb-1">與參與者關係</label>
-              <input type="text" name="guardian_relation" class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white" placeholder="例如：父母/監護人" />
+
+            <!-- 法定代理人 (跨欄) -->
+            <div class="mt-4 pt-4 border-t border-gray-300">
+               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                 <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">法定代理人 (未滿18歲須填寫)</label>
+                    <input type="text" name="guardian_name" class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white" placeholder="法定代理人姓名" />
+                 </div>
+                 <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">與參與者關係</label>
+                    <input type="text" name="guardian_relation" class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-blue-500 outline-none bg-white" placeholder="例如：父母" />
+                 </div>
+               </div>
             </div>
           </div>
         </div>
 
-        <!-- 四、電子簽名 -->
+        <!-- 三、 電子簽名 -->
         <div class="space-y-2">
-          <label class="block text-sm font-medium text-gray-800">
-            立切結書人電子簽名 <span class="text-red-500">* ( mandatory 必填)</span>
+          <label class="block text-sm font-bold text-gray-800">
+            電子簽名區 <span class="text-red-500">* (必填)</span>
           </label>
           <div class="border-2 border-dashed border-gray-300 rounded-lg bg-gray-50 relative">
             <canvas id="signature-pad" class="w-full h-44 rounded-lg cursor-crosshair block"></canvas>
@@ -131,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
         <input type="hidden" name="signature_data" id="sig-input" />
         <input type="hidden" name="signed_at" id="signed-at-input" />
 
-        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-lg shadow-md transition duration-200">
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-lg shadow-md transition duration-200 mt-4">
           同意條款並完成電子簽署
         </button>
       </form>
