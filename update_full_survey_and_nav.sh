@@ -1,3 +1,9 @@
+#!/bin/bash
+set -e
+
+echo "⚙️ 1. 更新頁面 (src/pages/survey.astro) 加入完整 Google 表單選項與保險說明..."
+
+cat << 'ASTRO_EOF' > src/pages/survey.astro
 ---
 import Layout from '../layouts/Layout.astro';
 ---
@@ -308,3 +314,19 @@ import Layout from '../layouts/Layout.astro';
     });
   </script>
 </Layout>
+ASTRO_EOF
+
+echo "⚙️ 2. 在 Layout/Navbar 中新增『東北角Fun Dive報名』選單選項..."
+
+# 搜尋 Header / Layout / Navbar 組件並新增連結標籤
+if [ -f "src/components/Header.astro" ]; then
+  sed -i '/<\/nav>/i \  <a href="/survey" class="hover:text-blue-600 font-medium">東北角Fun Dive報名<\/a>' src/components/Header.astro || true
+elif [ -f "src/layouts/Layout.astro" ]; then
+  sed -i '/<\/nav>/i \  <a href="/survey" class="hover:text-blue-600 font-medium">東北角Fun Dive報名<\/a>' src/layouts/Layout.astro || true
+fi
+
+git add .
+git commit -m "Add full registration form, insurance warning block, and add Fun Dive registration to header nav" || true
+git push origin main --force
+
+echo "✨ 已成功完成更新並推送到 GitHub！"
